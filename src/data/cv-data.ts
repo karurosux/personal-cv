@@ -1,0 +1,111 @@
+import { CVData } from "@/types/cv";
+
+export const cvData: CVData = {
+  name: "Carlos Javier Gonzalez Vasquez",
+  title: "Senior Software Engineer",
+  yearsOfExperience: 11,
+  contactInfo: {
+    email: "justdevelopitmx@proton.me",
+    phone: "+66 91 071 3465",
+    location: "Bangkok, Thailand",
+    github: "https://github.com/karurosux",
+    linkedin: "https://www.linkedin.com/in/karurosux",
+  },
+  primarySkills: [
+    "Angular",
+    "React",
+    "Svelte",
+    "SvelteKit",
+    "TypeScript",
+    "JavaScript",
+    "NodeJs",
+    "Tailwind",
+    "Redux",
+    "NgRx",
+    "Signals",
+    "Npm",
+    "Git",
+    "Scrum",
+  ],
+  allSkills: ["Docker", "PostgreSQL", "ORACLE", "MSSQL"],
+  programmingLanguages: [
+    "JavaScript",
+    "TypeScript",
+    "Golang",
+    "C#",
+    "Java",
+    "SQL",
+  ],
+  frameworks: [
+    "Angular",
+    "React",
+    "NextJs",
+    "SvelteKit",
+    "Echo",
+    "LapStack",
+    "ExtJS",
+    "ExpressJS",
+    "NestJs",
+    "PocketBase",
+  ],
+  professionalSummary: {
+    intro:
+      "I've built my career by solving complex problems others couldn't tackle and delivering solutions that unlock new capabilities for teams and organizations. My journey began as a Full Stack Developer, where I was promoted to Team Lead after just 6 months—developing end-to-end solutions including a quoter module for Mexico's public property registry system using ExtJS, C#/.NET, and Oracle/MSSQL.",
+    careerProgression:
+      "My specialization in frontend development began with mastering AngularJS and early Angular 2, which led to a role with a US clinical trials software company. There, I built sophisticated questionnaire applications that streamlined data collection for medical research. Driven to excel, I immersed myself in advanced technologies, design patterns, and best practices through extensive reading and hands-on experimentation. This dedication to continuous learning caught the attention of Semantic AI, a US data intelligence platform, where I was hired as a Senior Software Engineer.",
+    currentRole:
+      "At Semantic AI, I've reached my full potential as a senior developer, tackling high-stakes challenges from UI development to leading a plugin framework development team. My contributions have directly saved important customer contracts through rapid problem-solving and proof-of-concept development. While primarily focused on frontend technologies (Angular, React, Vanilla JavaScript), I've expanded my impact across the full stack—developing Java Spring backends, creating CLI tools, managing Docker deployments, and leading documentation efforts. Working alongside exceptionally talented engineers has accelerated my growth, and I've had the privilege of mentoring brilliant developers as well. Recognition of my contributions culminated in receiving the Employee of the Year award, validating my ability to deliver exceptional results and drive meaningful impact on complex software projects.",
+  },
+  workExperience: [
+    {
+      title: "Sr. Software Engineer",
+      company: "Semantic AI",
+      location: "San Diego, CA",
+      startDate: "Jan 2019",
+      endDate: "May 2025",
+      description:
+        "Developed and maintained frontend applications using Angular 2+ and React, delivering modern web interfaces and component-based and plugin-based solutions, developed Java backend features, developed automation scripts, docker containers for development environments and contributed to documenting efforts. Performed as Team Lead of multiple projects, including multiple POCs, war rooms and mentored multiple engineers.",
+      skills: [
+        "Angular",
+        "React",
+        "TypeScript",
+        "Java Spring",
+        "Docker",
+        "NgRx",
+        "PostgreSQL",
+        "OpenLayers",
+        "Leaflet",
+        "Tailwind",
+        "Bootstrap",
+      ],
+    },
+    {
+      title: "Software Engineer",
+      company: "PRA Health Sciences",
+      location: "San Diego, CA",
+      startDate: "Jul 2017",
+      endDate: "Jan 2019",
+      description:
+        "Developed and maintained clinical trial web applications using Angular 2+ and TypeScript, delivering responsive user interfaces and scalable frontend solutions, including project generators using yeoman to build CLI applications in NodeJs.",
+      skills: ["Angular", "TypeScript", "NodeJs", "Yeoman", "Angular Material"],
+    },
+    {
+      title: "Team Lead",
+      company: "Bufete de Tecnologia y Soluciones Avanzadas",
+      location: "Mexicali, BC, Mexico",
+      startDate: "Jan 2014",
+      endDate: "Jul 2017",
+      description:
+        "Led development team delivering web applications with ExtJS frontend, C#/.NET backend, and Oracle/MSSQL databases. Coordinated sprint execution to meet project goals and conducted technical research for proof-of-concepts and architectural solutions.",
+      skills: [
+        "ExtJS",
+        "C#",
+        ".NET",
+        "Oracle",
+        "MSSQL",
+        "Entity Framework",
+        "JavaScript",
+      ],
+    },
+  ],
+};
