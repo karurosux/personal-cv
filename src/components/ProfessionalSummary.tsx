@@ -1,4 +1,5 @@
 import TerminalPrompt from "./TerminalPrompt";
+import { Award } from "lucide-react";
 
 interface ProfessionalSummaryProps {
   summary: {
@@ -48,8 +49,8 @@ export default function ProfessionalSummary({
                 <span className="text-[#00ffff]">cat awards.txt</span>
               </div>
               <div className="terminal-box-cyan p-4 bg-[#00ffff]/5">
-                <p className="text-[#00ffff]">
-                  ⭐{" "}
+                <p className="text-[#00ffff] flex items-center gap-2">
+                  <Award size={20} className="text-[#ffff00]" />
                   <span className="text-[#ffff00] font-bold">
                     Employee of the Year
                   </span>{" "}

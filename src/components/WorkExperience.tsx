@@ -1,5 +1,6 @@
 import { WorkExperience as WorkExperienceType } from '@/types/cv';
 import TerminalPrompt from './TerminalPrompt';
+import { MapPin, Calendar } from 'lucide-react';
 
 interface WorkExperienceProps {
   experiences: WorkExperienceType[];
@@ -32,10 +33,14 @@ export default function WorkExperience({ experiences }: WorkExperienceProps) {
                   </div>
                   <p className="text-xl text-[#00ffff]">@ {exp.company}</p>
                   <div className="flex flex-wrap gap-4 text-sm text-[#8b949e] mt-2">
-                    <span>📍 {exp.location}</span>
+                    <span className="flex items-center gap-1">
+                      <MapPin size={14} className="text-[#00ff41]" />
+                      {exp.location}
+                    </span>
                     <span>|</span>
-                    <span>
-                      📅 {exp.startDate} - {exp.endDate}
+                    <span className="flex items-center gap-1">
+                      <Calendar size={14} className="text-[#00ff41]" />
+                      {exp.startDate} - {exp.endDate}
                     </span>
                   </div>
                 </div>

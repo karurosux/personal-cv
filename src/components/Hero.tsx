@@ -1,6 +1,7 @@
 import { ContactInfo } from "@/types/cv";
 import TerminalPrompt from "./TerminalPrompt";
 import Image from "next/image";
+import { MapPin, Clock, Mail, Phone } from "lucide-react";
 
 interface HeroProps {
   name: string;
@@ -60,22 +61,26 @@ export default function Hero({
               <span className="text-[#00ffff]">cat info.txt</span>
             </div>
             <div className="pl-0 text-[#8b949e] space-y-1">
-              <p>
-                📍 Location:{" "}
+              <p className="flex items-center gap-2">
+                <MapPin size={16} className="text-[#00ff41]" />
+                Location:{" "}
                 <span className="text-[#00ff41]">{contactInfo.location}</span>
               </p>
-              <p>
-                ⏱ Experience:{" "}
+              <p className="flex items-center gap-2">
+                <Clock size={16} className="text-[#00ff41]" />
+                Experience:{" "}
                 <span className="text-[#00ff41]">
                   {yearsOfExperience} years
                 </span>
               </p>
-              <p>
-                📧 Email:{" "}
+              <p className="flex items-center gap-2">
+                <Mail size={16} className="text-[#00ff41]" />
+                Email:{" "}
                 <span className="text-[#00ff41]">{contactInfo.email}</span>
               </p>
-              <p>
-                📱 Phone:{" "}
+              <p className="flex items-center gap-2">
+                <Phone size={16} className="text-[#00ff41]" />
+                Phone:{" "}
                 <span className="text-[#00ff41]">{contactInfo.phone}</span>
               </p>
             </div>
@@ -110,6 +115,14 @@ export default function Hero({
                 className="px-4 py-2 terminal-box-cyan text-[#00ffff] hover:bg-[#00ffff]/10 transition-all"
               >
                 → linkedin/
+              </a>
+
+              <a
+                href="/api/generate-pdf"
+                download
+                className="px-4 py-2 terminal-box-cyan text-[#00ffff] hover:bg-[#00ffff]/10 transition-all"
+              >
+                → download pdf
               </a>
             </div>
           </div>
