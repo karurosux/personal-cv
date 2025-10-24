@@ -1,12 +1,13 @@
 import { NextResponse } from 'next/server';
-import { renderToBuffer } from '@react-pdf/renderer';
+import { pdf } from '@react-pdf/renderer';
 import { createElement } from 'react';
 import { CVPDFDocument } from '@/components/PDFDocument';
 import { cvData } from '@/data/cv-data';
 
 export async function GET() {
   const pdfDocument = createElement(CVPDFDocument, { data: cvData });
-  const pdfBuffer = await renderToBuffer(pdfDocument);
+  const pdfBlob = await pdf(pdfDocument as any).toBlob();
+  const pdfBuffer = await pdfBlob.arrayBuffer();
 
   return new NextResponse(pdfBuffer, {
     headers: {
