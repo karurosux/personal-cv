@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { track } from '@vercel/analytics';
 import TerminalPrompt from './TerminalPrompt';
 
 interface SkillsProps {
@@ -68,7 +69,10 @@ export default function Skills({
 
         <div className="flex flex-wrap gap-2 mb-8">
           <button
-            onClick={() => setActiveTab('primary')}
+            onClick={() => {
+              track('skills_tab_click', { tab: 'primary' });
+              setActiveTab('primary');
+            }}
             className={`px-4 py-2 terminal-box transition-all ${
               activeTab === 'primary'
                 ? 'bg-[#00ff41] text-[#0d1117]'
@@ -78,7 +82,10 @@ export default function Skills({
             $ primary.json
           </button>
           <button
-            onClick={() => setActiveTab('languages')}
+            onClick={() => {
+              track('skills_tab_click', { tab: 'languages' });
+              setActiveTab('languages');
+            }}
             className={`px-4 py-2 terminal-box transition-all ${
               activeTab === 'languages'
                 ? 'bg-[#00ff41] text-[#0d1117]'
@@ -88,7 +95,10 @@ export default function Skills({
             $ languages.json
           </button>
           <button
-            onClick={() => setActiveTab('frameworks')}
+            onClick={() => {
+              track('skills_tab_click', { tab: 'frameworks' });
+              setActiveTab('frameworks');
+            }}
             className={`px-4 py-2 terminal-box transition-all ${
               activeTab === 'frameworks'
                 ? 'bg-[#00ff41] text-[#0d1117]'
@@ -98,7 +108,10 @@ export default function Skills({
             $ frameworks.json
           </button>
           <button
-            onClick={() => setActiveTab('all')}
+            onClick={() => {
+              track('skills_tab_click', { tab: 'all' });
+              setActiveTab('all');
+            }}
             className={`px-4 py-2 terminal-box transition-all ${
               activeTab === 'all'
                 ? 'bg-[#00ff41] text-[#0d1117]'

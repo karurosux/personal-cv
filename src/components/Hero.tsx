@@ -1,7 +1,10 @@
+"use client";
+
 import { ContactInfo } from "@/types/cv";
 import TerminalPrompt from "./TerminalPrompt";
 import Image from "next/image";
 import { MapPin, Clock, Mail, Phone } from "lucide-react";
+import { track } from "@vercel/analytics";
 
 interface HeroProps {
   name: string;
@@ -94,6 +97,7 @@ export default function Hero({
             <div className="flex flex-wrap gap-3 pl-0">
               <a
                 href={`mailto:${contactInfo.email}`}
+                onClick={() => track("email_click")}
                 className="px-4 py-2 terminal-box bg-[#00ff41] text-[#0d1117] hover:bg-[#00ff41]/90 transition-all font-bold"
               >
                 $ contact.sh
@@ -103,6 +107,7 @@ export default function Hero({
                 href={contactInfo.github}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => track("github_click")}
                 className="px-4 py-2 terminal-box-cyan text-[#00ffff] hover:bg-[#00ffff]/10 transition-all"
               >
                 → github/
@@ -112,6 +117,7 @@ export default function Hero({
                 href={contactInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => track("linkedin_click")}
                 className="px-4 py-2 terminal-box-cyan text-[#00ffff] hover:bg-[#00ffff]/10 transition-all"
               >
                 → linkedin/
@@ -120,6 +126,7 @@ export default function Hero({
               <a
                 href="/api/generate-pdf"
                 download
+                onClick={() => track("pdf_download")}
                 className="px-4 py-2 terminal-box-cyan text-[#00ffff] hover:bg-[#00ffff]/10 transition-all"
               >
                 → download pdf
