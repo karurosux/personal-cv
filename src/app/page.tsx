@@ -2,6 +2,7 @@ import Hero from '@/components/Hero';
 import Skills from '@/components/Skills';
 import ProfessionalSummary from '@/components/ProfessionalSummary';
 import WorkExperience from '@/components/WorkExperience';
+import Education from '@/components/Education';
 import Contact from '@/components/Contact';
 import TerminalPrompt from '@/components/TerminalPrompt';
 import { cvData } from '@/data/cv-data';
@@ -26,6 +27,8 @@ export default function Home() {
       />
 
       <WorkExperience experiences={cvData.workExperience} />
+
+      <Education education={cvData.education} />
 
       <Contact contactInfo={cvData.contactInfo} />
 

@@ -124,4 +124,21 @@ export const cvData: CVData = {
       ],
     },
   ],
+  education: [
+    {
+      degree: "Engineering in Information Technologies",
+      institution: "Universidad Politécnicade Baja California",
+      location: "Mexicali, Baja California, Mexico",
+      startDate: "Sep 2011",
+      endDate: "Dec 2014",
+      description:
+        "Focused on software engineering, Networks, and Business Intelligence.",
+      achievements: [
+        "3rd Place in 5th Scientific and Technological Creativity Contest",
+        "1st Place in 6th Scientific and Technological Creativity Contest",
+        'Demo Developer(Developed a demo game for the Expo) in UPBC University Expo 2012 "Innovation Meeting with Engineering, Science and Technology"',
+        "Demo Developer(Developed a demo game in Unity Engine with movement sensors as game input for the Expo) in Vocational Guidance UPBC 2013",
+      ],
+    },
+  ],
 };

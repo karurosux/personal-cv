@@ -29,6 +29,16 @@ export interface WorkExperience {
   skills: string[];
 }
 
+export interface Education {
+  degree: string;
+  institution: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+  description?: string;
+  achievements?: string[];
+}
+
 export interface CVData {
   name: string;
   title: string;
@@ -44,4 +54,5 @@ export interface CVData {
     currentRole: string;
   };
   workExperience: WorkExperience[];
+  education: Education[];
 }

@@ -128,6 +128,44 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     fontWeight: 600,
   },
+  educationItem: {
+    marginBottom: 14,
+    paddingLeft: 12,
+    borderLeft: '3 solid #10b981',
+  },
+  educationDegree: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: '#0f172a',
+    marginBottom: 2,
+  },
+  educationInstitution: {
+    fontSize: 11,
+    color: '#10b981',
+    marginBottom: 2,
+    fontWeight: 600,
+  },
+  educationDate: {
+    fontSize: 9,
+    color: '#64748b',
+    marginBottom: 6,
+  },
+  educationDescription: {
+    fontSize: 10,
+    lineHeight: 1.5,
+    color: '#475569',
+    marginBottom: 6,
+  },
+  achievementsList: {
+    marginTop: 4,
+    marginBottom: 4,
+  },
+  achievementItem: {
+    fontSize: 9,
+    color: '#475569',
+    marginBottom: 3,
+    paddingLeft: 8,
+  },
 });
 
 interface PDFDocumentProps {
@@ -221,6 +259,31 @@ export const CVPDFDocument = ({ data }: PDFDocumentProps) => {
                   </Text>
                 ))}
               </View>
+            </View>
+          ))}
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Education</Text>
+          {data.education.map((edu, index) => (
+            <View key={index} style={styles.educationItem}>
+              <Text style={styles.educationDegree}>{edu.degree}</Text>
+              <Text style={styles.educationInstitution}>{edu.institution}</Text>
+              <Text style={styles.educationDate}>
+                {edu.location} | {edu.startDate} - {edu.endDate}
+              </Text>
+              {edu.description && (
+                <Text style={styles.educationDescription}>{edu.description}</Text>
+              )}
+              {edu.achievements && edu.achievements.length > 0 && (
+                <View style={styles.achievementsList}>
+                  {edu.achievements.map((achievement, idx) => (
+                    <Text key={idx} style={styles.achievementItem}>
+                      • {achievement}
+                    </Text>
+                  ))}
+                </View>
+              )}
             </View>
           ))}
         </View>
