@@ -127,7 +127,7 @@ export const cvData: CVData = {
   education: [
     {
       degree: "Engineering in Information Technologies",
-      institution: "Universidad Politécnicade Baja California",
+      institution: "Universidad Politécnica de Baja California",
       location: "Mexicali, Baja California, Mexico",
       startDate: "Sep 2011",
       endDate: "Dec 2014",
