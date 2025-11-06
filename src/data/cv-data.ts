@@ -65,7 +65,7 @@ export const cvData: CVData = {
       startDate: "Jan 2019",
       endDate: "May 2025",
       description:
-        "Developed and maintained frontend applications using Angular 2+ and React, delivering modern web interfaces and component-based and plugin-based solutions, developed Java backend features, developed automation scripts, docker containers for development environments and contributed to documenting efforts. Performed as Team Lead of multiple projects, including multiple POCs, war rooms and mentored multiple engineers.",
+        "Developed and maintained frontend applications using Angular 2+ and React, delivering modern web interfaces and component-based and plugin-based solutions, developed Java backend features, developed automation scripts, docker containers for development environments and contributed to documenting efforts. Performed as Team Lead of multiple projects, including multiple POCs, war rooms and mentored multiple engineers. Received Employee of the Year award for exceptional contributions.",
       skills: [
         "Angular",
         "React",

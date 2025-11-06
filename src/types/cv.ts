@@ -56,3 +56,15 @@ export interface CVData {
   workExperience: WorkExperience[];
   education: Education[];
 }
+
+export interface CoverLetterData {
+  recipientName?: string;
+  recipientTitle?: string;
+  companyName: string;
+  companyAddress?: string;
+  position: string;
+  openingParagraph: string;
+  bodyParagraphs: string[];
+  closingParagraph: string;
+  salutation: string;
+}
