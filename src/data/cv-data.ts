@@ -6,8 +6,8 @@ export const cvData: CVData = {
   yearsOfExperience: 11,
   contactInfo: {
     email: "justdevelopitmx@proton.me",
-    phone: "+66 91 071 3465",
-    location: "Bangkok, Thailand",
+    phone: "",
+    location: "Mexicali, Baja California, Mexico",
     github: "https://github.com/karurosux",
     linkedin: "https://www.linkedin.com/in/karurosux",
   },

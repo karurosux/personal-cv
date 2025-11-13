@@ -1,5 +1,5 @@
-import { ContactInfo } from '@/types/cv';
-import TerminalPrompt from './TerminalPrompt';
+import { ContactInfo } from "@/types/cv";
+import TerminalPrompt from "./TerminalPrompt";
 
 interface ContactProps {
   contactInfo: ContactInfo;
@@ -12,7 +12,9 @@ export default function Contact({ contactInfo }: ContactProps) {
         <div className="mb-12 space-y-3">
           <div className="flex items-start gap-2">
             <TerminalPrompt user="carlos" path="~/portfolio" />
-            <span className="text-[#00ffff]">curl -X GET https://api.carlos.dev/contact</span>
+            <span className="text-[#00ffff]">
+              curl -X GET https://api.carlos.dev/contact
+            </span>
           </div>
         </div>
 
@@ -23,19 +25,25 @@ export default function Contact({ contactInfo }: ContactProps) {
           >
             <div className="space-y-1">
               <p className="text-[#ffff00] text-sm">// email</p>
-              <p className="text-[#00ff41] group-hover:terminal-glow transition-all">{contactInfo.email}</p>
+              <p className="text-[#00ff41] group-hover:terminal-glow transition-all">
+                {contactInfo.email}
+              </p>
             </div>
           </a>
 
-          <a
-            href={`tel:${contactInfo.phone}`}
-            className="group block p-4 terminal-box hover:bg-[#00ff41]/10 transition-all"
-          >
-            <div className="space-y-1">
-              <p className="text-[#ffff00] text-sm">// phone</p>
-              <p className="text-[#00ff41] group-hover:terminal-glow transition-all">{contactInfo.phone}</p>
-            </div>
-          </a>
+          {contactInfo.phone?.length > 0 && (
+            <a
+              href={`tel:${contactInfo.phone}`}
+              className="group block p-4 terminal-box hover:bg-[#00ff41]/10 transition-all"
+            >
+              <div className="space-y-1">
+                <p className="text-[#ffff00] text-sm">// phone</p>
+                <p className="text-[#00ff41] group-hover:terminal-glow transition-all">
+                  {contactInfo.phone}
+                </p>
+              </div>
+            </a>
+          )}
 
           <a
             href={contactInfo.github}
@@ -65,9 +73,13 @@ export default function Contact({ contactInfo }: ContactProps) {
         <div className="mt-12 space-y-3">
           <div className="flex items-start gap-2">
             <TerminalPrompt user="carlos" path="~/portfolio" />
-            <span className="text-[#00ffff]">echo &quot;Let&apos;s build something amazing together!&quot;</span>
+            <span className="text-[#00ffff]">
+              echo &quot;Let&apos;s build something amazing together!&quot;
+            </span>
           </div>
-          <p className="text-[#8b949e] pl-0">Let&apos;s build something amazing together!</p>
+          <p className="text-[#8b949e] pl-0">
+            Let&apos;s build something amazing together!
+          </p>
         </div>
       </div>
     </section>

@@ -1,48 +1,55 @@
-import { Document, Page, Text, View, StyleSheet, Link } from '@react-pdf/renderer';
-import { CVData } from '@/types/cv';
+import {
+  Document,
+  Page,
+  Text,
+  View,
+  StyleSheet,
+  Link,
+} from "@react-pdf/renderer";
+import { CVData } from "@/types/cv";
 
 const styles = StyleSheet.create({
   page: {
-    flexDirection: 'column',
-    backgroundColor: '#FFFFFF',
+    flexDirection: "column",
+    backgroundColor: "#FFFFFF",
     padding: 50,
-    fontFamily: 'Helvetica',
+    fontFamily: "Helvetica",
     fontSize: 10,
-    color: '#1a1a1a',
+    color: "#1a1a1a",
     lineHeight: 1.6,
   },
   header: {
     marginBottom: 25,
-    borderBottom: '2 solid #2563eb',
+    borderBottom: "2 solid #2563eb",
     paddingBottom: 18,
   },
   name: {
     fontSize: 28,
-    fontWeight: 'bold',
-    color: '#0f172a',
+    fontWeight: "bold",
+    color: "#0f172a",
     marginBottom: 18,
     letterSpacing: -0.5,
   },
   title: {
     fontSize: 16,
-    color: '#475569',
+    color: "#475569",
     marginBottom: 16,
     fontWeight: 600,
   },
   contactInfo: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    flexWrap: "wrap",
     gap: 12,
     fontSize: 9,
-    color: '#64748b',
+    color: "#64748b",
     marginTop: 8,
   },
   contactItem: {
     marginRight: 16,
   },
   contactLink: {
-    color: '#2563eb',
-    textDecoration: 'none',
+    color: "#2563eb",
+    textDecoration: "none",
   },
   section: {
     marginTop: 18,
@@ -50,110 +57,110 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 13,
-    fontWeight: 'bold',
-    color: '#0f172a',
+    fontWeight: "bold",
+    color: "#0f172a",
     marginBottom: 10,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
     letterSpacing: 0.8,
-    borderBottom: '1.5 solid #e2e8f0',
+    borderBottom: "1.5 solid #e2e8f0",
     paddingBottom: 5,
   },
   text: {
     fontSize: 10,
     lineHeight: 1.6,
-    color: '#334155',
+    color: "#334155",
     marginBottom: 8,
-    textAlign: 'justify',
+    textAlign: "justify",
   },
   skillsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    flexWrap: "wrap",
     gap: 6,
     marginTop: 6,
   },
   skill: {
-    backgroundColor: '#f1f5f9',
-    padding: '3 10',
+    backgroundColor: "#f1f5f9",
+    padding: "3 10",
     borderRadius: 4,
     fontSize: 9,
-    color: '#334155',
-    border: '1 solid #cbd5e1',
+    color: "#334155",
+    border: "1 solid #cbd5e1",
     marginBottom: 0,
     lineHeight: 1,
   },
   experienceItem: {
     marginBottom: 16,
     paddingLeft: 12,
-    borderLeft: '3 solid #2563eb',
+    borderLeft: "3 solid #2563eb",
   },
   experienceHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
     marginBottom: 4,
   },
   experienceTitle: {
     fontSize: 12,
-    fontWeight: 'bold',
-    color: '#0f172a',
+    fontWeight: "bold",
+    color: "#0f172a",
     marginBottom: 2,
   },
   experienceCompany: {
     fontSize: 11,
-    color: '#2563eb',
+    color: "#2563eb",
     marginBottom: 2,
     fontWeight: 600,
   },
   experienceDate: {
     fontSize: 9,
-    color: '#64748b',
+    color: "#64748b",
     marginBottom: 8,
   },
   experienceDescription: {
     fontSize: 10,
     lineHeight: 1.5,
-    color: '#475569',
+    color: "#475569",
     marginBottom: 8,
   },
   subsectionTitle: {
     fontSize: 10,
     fontWeight: 600,
-    color: '#475569',
+    color: "#475569",
     marginTop: 10,
     marginBottom: 6,
   },
   techStack: {
     fontSize: 9,
-    color: '#64748b',
+    color: "#64748b",
     marginBottom: 6,
     fontWeight: 600,
   },
   educationItem: {
     marginBottom: 14,
     paddingLeft: 12,
-    borderLeft: '3 solid #10b981',
+    borderLeft: "3 solid #10b981",
   },
   educationDegree: {
     fontSize: 12,
-    fontWeight: 'bold',
-    color: '#0f172a',
+    fontWeight: "bold",
+    color: "#0f172a",
     marginBottom: 2,
   },
   educationInstitution: {
     fontSize: 11,
-    color: '#10b981',
+    color: "#10b981",
     marginBottom: 2,
     fontWeight: 600,
   },
   educationDate: {
     fontSize: 9,
-    color: '#64748b',
+    color: "#64748b",
     marginBottom: 6,
   },
   educationDescription: {
     fontSize: 10,
     lineHeight: 1.5,
-    color: '#475569',
+    color: "#475569",
     marginBottom: 6,
   },
   achievementsList: {
@@ -162,7 +169,7 @@ const styles = StyleSheet.create({
   },
   achievementItem: {
     fontSize: 9,
-    color: '#475569',
+    color: "#475569",
     marginBottom: 3,
     paddingLeft: 8,
   },
@@ -178,18 +185,26 @@ export const CVPDFDocument = ({ data }: PDFDocumentProps) => {
       <Page size="A4" style={styles.page}>
         <View style={styles.header}>
           <Text style={styles.name}>{data.name}</Text>
-          <Text style={styles.title}>{data.title} | {data.yearsOfExperience} Years of Experience</Text>
+          <Text style={styles.title}>
+            {data.title} | {data.yearsOfExperience} Years of Experience
+          </Text>
           <View style={styles.contactInfo}>
             <Text style={styles.contactItem}>{data.contactInfo.email}</Text>
-            <Text style={styles.contactItem}>{data.contactInfo.phone}</Text>
+            {data.contactInfo.phone?.length > 0 && (
+              <Text style={styles.contactItem}>{data.contactInfo.phone}</Text>
+            )}
             <Text style={styles.contactItem}>{data.contactInfo.location}</Text>
           </View>
           <View style={styles.contactInfo}>
             <Link src={data.contactInfo.github} style={styles.contactLink}>
-              <Text style={styles.contactItem}>{data.contactInfo.github.replace('https://', '')}</Text>
+              <Text style={styles.contactItem}>
+                {data.contactInfo.github.replace("https://", "")}
+              </Text>
             </Link>
             <Link src={data.contactInfo.linkedin} style={styles.contactLink}>
-              <Text style={styles.contactItem}>{data.contactInfo.linkedin.replace('https://', '')}</Text>
+              <Text style={styles.contactItem}>
+                {data.contactInfo.linkedin.replace("https://", "")}
+              </Text>
             </Link>
           </View>
         </View>
@@ -197,8 +212,12 @@ export const CVPDFDocument = ({ data }: PDFDocumentProps) => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Professional Summary</Text>
           <Text style={styles.text}>{data.professionalSummary.intro}</Text>
-          <Text style={styles.text}>{data.professionalSummary.careerProgression}</Text>
-          <Text style={styles.text}>{data.professionalSummary.currentRole}</Text>
+          <Text style={styles.text}>
+            {data.professionalSummary.careerProgression}
+          </Text>
+          <Text style={styles.text}>
+            {data.professionalSummary.currentRole}
+          </Text>
         </View>
 
         <View style={styles.section}>
@@ -250,7 +269,9 @@ export const CVPDFDocument = ({ data }: PDFDocumentProps) => {
               <Text style={styles.experienceDate}>
                 {exp.location} | {exp.startDate} - {exp.endDate}
               </Text>
-              <Text style={styles.experienceDescription}>{exp.description}</Text>
+              <Text style={styles.experienceDescription}>
+                {exp.description}
+              </Text>
               <Text style={styles.techStack}>Technologies Used:</Text>
               <View style={styles.skillsContainer}>
                 {exp.skills.map((skill) => (
@@ -273,7 +294,9 @@ export const CVPDFDocument = ({ data }: PDFDocumentProps) => {
                 {edu.location} | {edu.startDate} - {edu.endDate}
               </Text>
               {edu.description && (
-                <Text style={styles.educationDescription}>{edu.description}</Text>
+                <Text style={styles.educationDescription}>
+                  {edu.description}
+                </Text>
               )}
               {edu.achievements && edu.achievements.length > 0 && (
                 <View style={styles.achievementsList}>

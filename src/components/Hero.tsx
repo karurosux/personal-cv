@@ -40,104 +40,113 @@ export default function Hero({
                 />
                 <div className="absolute inset-0 pointer-events-none terminal-image-overlay"></div>
               </div>
-              <p className="text-[#8b949e] text-xs">File: avatar.jpeg | 220x220px</p>
+              <p className="text-[#8b949e] text-xs">
+                File: avatar.jpeg | 220x220px
+              </p>
             </div>
 
             <div className="flex-1 w-full">
+              <div className="space-y-3">
+                <div className="flex items-start gap-2">
+                  <TerminalPrompt user="carlos" path="~/portfolio" />
+                  <span className="text-[#00ffff]">whoami</span>
+                </div>
+                <div className="pl-0 space-y-1">
+                  <p className="text-[#00ff41] text-2xl md:text-4xl font-bold terminal-glow">
+                    {name}
+                  </p>
+                  <p className="text-[#ffff00] text-lg md:text-2xl">
+                    &gt; {title}
+                  </p>
+                </div>
+              </div>
 
-          <div className="space-y-3">
-            <div className="flex items-start gap-2">
-              <TerminalPrompt user="carlos" path="~/portfolio" />
-              <span className="text-[#00ffff]">whoami</span>
-            </div>
-            <div className="pl-0 space-y-1">
-              <p className="text-[#00ff41] text-2xl md:text-4xl font-bold terminal-glow">
-                {name}
-              </p>
-              <p className="text-[#ffff00] text-lg md:text-2xl">&gt; {title}</p>
-            </div>
-          </div>
+              <div className="space-y-2 pl-0">
+                <div className="flex items-start gap-2">
+                  <TerminalPrompt user="carlos" path="~/portfolio" />
+                  <span className="text-[#00ffff]">cat info.txt</span>
+                </div>
+                <div className="pl-0 text-[#8b949e] space-y-1">
+                  <p className="flex items-center gap-2">
+                    <MapPin size={16} className="text-[#00ff41]" />
+                    Location:{" "}
+                    <span className="text-[#00ff41]">
+                      {contactInfo.location}
+                    </span>
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <Clock size={16} className="text-[#00ff41]" />
+                    Experience:{" "}
+                    <span className="text-[#00ff41]">
+                      {yearsOfExperience} years
+                    </span>
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <Mail size={16} className="text-[#00ff41]" />
+                    Email:{" "}
+                    <span className="text-[#00ff41]">{contactInfo.email}</span>
+                  </p>
+                  {contactInfo.phone?.length > 0 && (
+                    <p className="flex items-center gap-2">
+                      <Phone size={16} className="text-[#00ff41]" />
+                      Phone:{" "}
+                      <span className="text-[#00ff41]">
+                        {contactInfo.phone}
+                      </span>
+                    </p>
+                  )}
+                </div>
+              </div>
 
-          <div className="space-y-2 pl-0">
-            <div className="flex items-start gap-2">
-              <TerminalPrompt user="carlos" path="~/portfolio" />
-              <span className="text-[#00ffff]">cat info.txt</span>
-            </div>
-            <div className="pl-0 text-[#8b949e] space-y-1">
-              <p className="flex items-center gap-2">
-                <MapPin size={16} className="text-[#00ff41]" />
-                Location:{" "}
-                <span className="text-[#00ff41]">{contactInfo.location}</span>
-              </p>
-              <p className="flex items-center gap-2">
-                <Clock size={16} className="text-[#00ff41]" />
-                Experience:{" "}
-                <span className="text-[#00ff41]">
-                  {yearsOfExperience} years
-                </span>
-              </p>
-              <p className="flex items-center gap-2">
-                <Mail size={16} className="text-[#00ff41]" />
-                Email:{" "}
-                <span className="text-[#00ff41]">{contactInfo.email}</span>
-              </p>
-              <p className="flex items-center gap-2">
-                <Phone size={16} className="text-[#00ff41]" />
-                Phone:{" "}
-                <span className="text-[#00ff41]">{contactInfo.phone}</span>
-              </p>
-            </div>
-          </div>
+              <div className="space-y-3 pt-6">
+                <div className="flex items-start gap-2">
+                  <TerminalPrompt user="carlos" path="~/portfolio" />
+                  <span className="text-[#00ffff]">ls -la ./links</span>
+                </div>
+                <div className="flex flex-wrap gap-3 pl-0">
+                  <a
+                    href={`mailto:${contactInfo.email}`}
+                    onClick={() => track("email_click")}
+                    className="px-4 py-2 terminal-box bg-[#00ff41] text-[#0d1117] hover:bg-[#00ff41]/90 transition-all font-bold"
+                  >
+                    $ contact.sh
+                  </a>
 
-          <div className="space-y-3 pt-6">
-            <div className="flex items-start gap-2">
-              <TerminalPrompt user="carlos" path="~/portfolio" />
-              <span className="text-[#00ffff]">ls -la ./links</span>
-            </div>
-            <div className="flex flex-wrap gap-3 pl-0">
-              <a
-                href={`mailto:${contactInfo.email}`}
-                onClick={() => track("email_click")}
-                className="px-4 py-2 terminal-box bg-[#00ff41] text-[#0d1117] hover:bg-[#00ff41]/90 transition-all font-bold"
-              >
-                $ contact.sh
-              </a>
+                  <a
+                    href={contactInfo.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => track("github_click")}
+                    className="px-4 py-2 terminal-box-cyan text-[#00ffff] hover:bg-[#00ffff]/10 transition-all"
+                  >
+                    → github/
+                  </a>
 
-              <a
-                href={contactInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => track("github_click")}
-                className="px-4 py-2 terminal-box-cyan text-[#00ffff] hover:bg-[#00ffff]/10 transition-all"
-              >
-                → github/
-              </a>
+                  <a
+                    href={contactInfo.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => track("linkedin_click")}
+                    className="px-4 py-2 terminal-box-cyan text-[#00ffff] hover:bg-[#00ffff]/10 transition-all"
+                  >
+                    → linkedin/
+                  </a>
 
-              <a
-                href={contactInfo.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => track("linkedin_click")}
-                className="px-4 py-2 terminal-box-cyan text-[#00ffff] hover:bg-[#00ffff]/10 transition-all"
-              >
-                → linkedin/
-              </a>
+                  <a
+                    href="/api/generate-pdf"
+                    download
+                    onClick={() => track("pdf_download")}
+                    className="px-4 py-2 terminal-box-cyan text-[#00ffff] hover:bg-[#00ffff]/10 transition-all"
+                  >
+                    → download pdf
+                  </a>
+                </div>
+              </div>
 
-              <a
-                href="/api/generate-pdf"
-                download
-                onClick={() => track("pdf_download")}
-                className="px-4 py-2 terminal-box-cyan text-[#00ffff] hover:bg-[#00ffff]/10 transition-all"
-              >
-                → download pdf
-              </a>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-2 pt-4">
-            <TerminalPrompt user="carlos" path="~/portfolio" />
-            <span className="cursor-blink">█</span>
-          </div>
+              <div className="flex items-start gap-2 pt-4">
+                <TerminalPrompt user="carlos" path="~/portfolio" />
+                <span className="cursor-blink">█</span>
+              </div>
             </div>
           </div>
         </div>

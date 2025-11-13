@@ -1,4 +1,4 @@
-import { CoverLetterData, CVData } from '@/types/cv';
+import { CoverLetterData, CVData } from "@/types/cv";
 
 interface CoverLetterProps {
   data: CoverLetterData;
@@ -6,10 +6,10 @@ interface CoverLetterProps {
 }
 
 export default function CoverLetter({ data, cvData }: CoverLetterProps) {
-  const currentDate = new Date().toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+  const currentDate = new Date().toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 
   return (
@@ -19,7 +19,9 @@ export default function CoverLetter({ data, cvData }: CoverLetterProps) {
           <h1 className="text-2xl font-bold">{cvData.name}</h1>
           <div className="text-sm text-gray-600 space-y-1">
             <p>{cvData.contactInfo.email}</p>
-            <p>{cvData.contactInfo.phone}</p>
+            {cvData.contactInfo.phone?.length > 0 && (
+              <p>{cvData.contactInfo.phone}</p>
+            )}
             <p>{cvData.contactInfo.location}</p>
           </div>
         </div>
