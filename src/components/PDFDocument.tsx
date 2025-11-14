@@ -193,7 +193,9 @@ export const CVPDFDocument = ({ data }: PDFDocumentProps) => {
             {data.contactInfo.phone?.length > 0 && (
               <Text style={styles.contactItem}>{data.contactInfo.phone}</Text>
             )}
-            <Text style={styles.contactItem}>{data.contactInfo.location}</Text>
+            {data.contactInfo.location?.length > 0 && (
+              <Text style={styles.contactItem}>{data.contactInfo.location}</Text>
+            )}
           </View>
           <View style={styles.contactInfo}>
             <Link src={data.contactInfo.github} style={styles.contactLink}>
@@ -309,6 +311,17 @@ export const CVPDFDocument = ({ data }: PDFDocumentProps) => {
               )}
             </View>
           ))}
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Languages</Text>
+          <View style={styles.skillsContainer}>
+            {data.languages.map((language, index) => (
+              <Text key={index} style={styles.skill}>
+                {language.name} ({language.proficiency})
+              </Text>
+            ))}
+          </View>
         </View>
       </Page>
     </Document>

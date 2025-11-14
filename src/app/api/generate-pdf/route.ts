@@ -1,11 +1,24 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { pdf } from '@react-pdf/renderer';
 import { createElement } from 'react';
 import { CVPDFDocument } from '@/components/PDFDocument';
 import { cvData } from '@/data/cv-data';
 
-export async function GET() {
-  const pdfDocument = createElement(CVPDFDocument, { data: cvData });
+export async function GET(request: NextRequest) {
+  const searchParams = request.nextUrl.searchParams;
+  const phoneParam = searchParams.get('cvp');
+  const locationParam = searchParams.get('cvl');
+
+  const data = {
+    ...cvData,
+    contactInfo: {
+      ...cvData.contactInfo,
+      ...(phoneParam && { phone: phoneParam }),
+      ...(locationParam && { location: locationParam }),
+    },
+  };
+
+  const pdfDocument = createElement(CVPDFDocument, { data });
   const pdfBlob = await pdf(pdfDocument as any).toBlob();
   const pdfBuffer = await pdfBlob.arrayBuffer();
 

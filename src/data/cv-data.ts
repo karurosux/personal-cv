@@ -1,13 +1,13 @@
 import { CVData } from "@/types/cv";
 
-export const cvData: CVData = {
+const baseData: CVData = {
   name: "Carlos Javier Gonzalez Vasquez",
   title: "Senior Software Engineer",
   yearsOfExperience: 11,
   contactInfo: {
     email: "justdevelopitmx@proton.me",
     phone: "",
-    location: "Mexicali, Baja California, Mexico",
+    location: "",
     github: "https://github.com/karurosux",
     linkedin: "https://www.linkedin.com/in/karurosux",
   },
@@ -48,6 +48,10 @@ export const cvData: CVData = {
     "ExpressJS",
     "NestJs",
     "PocketBase",
+  ],
+  languages: [
+    { name: "Spanish", proficiency: "Native" },
+    { name: "English", proficiency: "Fluent" },
   ],
   professionalSummary: {
     intro:
@@ -142,3 +146,24 @@ export const cvData: CVData = {
     },
   ],
 };
+
+export const getCVData = (): CVData => {
+  if (typeof window === "undefined") {
+    return baseData;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const phoneParam = params.get("cvp");
+  const locationParam = params.get("cvl");
+
+  return {
+    ...baseData,
+    contactInfo: {
+      ...baseData.contactInfo,
+      phone: phoneParam || baseData.contactInfo.phone,
+      location: locationParam || baseData.contactInfo.location,
+    },
+  };
+};
+
+export const cvData = baseData;

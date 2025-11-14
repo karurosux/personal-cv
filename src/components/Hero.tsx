@@ -19,6 +19,21 @@ export default function Hero({
   yearsOfExperience,
   contactInfo,
 }: HeroProps) {
+  const getPDFUrl = () => {
+    if (typeof window === "undefined") return "/api/generate-pdf";
+
+    const params = new URLSearchParams(window.location.search);
+    const cvp = params.get("cvp");
+    const cvl = params.get("cvl");
+
+    const pdfParams = new URLSearchParams();
+    if (cvp) pdfParams.set("cvp", cvp);
+    if (cvl) pdfParams.set("cvl", cvl);
+
+    const queryString = pdfParams.toString();
+    return queryString ? `/api/generate-pdf?${queryString}` : "/api/generate-pdf";
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center px-4 py-20">
       <div className="max-w-6xl w-full">
@@ -67,13 +82,15 @@ export default function Hero({
                   <span className="text-[#00ffff]">cat info.txt</span>
                 </div>
                 <div className="pl-0 text-[#8b949e] space-y-1">
-                  <p className="flex items-center gap-2">
-                    <MapPin size={16} className="text-[#00ff41]" />
-                    Location:{" "}
-                    <span className="text-[#00ff41]">
-                      {contactInfo.location}
-                    </span>
-                  </p>
+                  {contactInfo.location?.length > 0 && (
+                    <p className="flex items-center gap-2">
+                      <MapPin size={16} className="text-[#00ff41]" />
+                      Location:{" "}
+                      <span className="text-[#00ff41]">
+                        {contactInfo.location}
+                      </span>
+                    </p>
+                  )}
                   <p className="flex items-center gap-2">
                     <Clock size={16} className="text-[#00ff41]" />
                     Experience:{" "}
@@ -133,7 +150,7 @@ export default function Hero({
                   </a>
 
                   <a
-                    href="/api/generate-pdf"
+                    href={getPDFUrl()}
                     download
                     onClick={() => track("pdf_download")}
                     className="px-4 py-2 terminal-box-cyan text-[#00ffff] hover:bg-[#00ffff]/10 transition-all"

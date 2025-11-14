@@ -39,6 +39,11 @@ export interface Education {
   achievements?: string[];
 }
 
+export interface Language {
+  name: string;
+  proficiency: string;
+}
+
 export interface CVData {
   name: string;
   title: string;
@@ -48,6 +53,7 @@ export interface CVData {
   allSkills: string[];
   programmingLanguages: string[];
   frameworks: string[];
+  languages: Language[];
   professionalSummary: {
     intro: string;
     careerProgression: string;

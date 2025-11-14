@@ -1,13 +1,18 @@
+"use client";
+
 import Hero from '@/components/Hero';
 import Skills from '@/components/Skills';
 import ProfessionalSummary from '@/components/ProfessionalSummary';
 import WorkExperience from '@/components/WorkExperience';
 import Education from '@/components/Education';
+import Languages from '@/components/Languages';
 import Contact from '@/components/Contact';
 import TerminalPrompt from '@/components/TerminalPrompt';
-import { cvData } from '@/data/cv-data';
+import { getCVData } from '@/data/cv-data';
 
 export default function Home() {
+  const cvData = getCVData();
+
   return (
     <main className="min-h-screen terminal-scanline">
       <Hero
@@ -29,6 +34,8 @@ export default function Home() {
       <WorkExperience experiences={cvData.workExperience} />
 
       <Education education={cvData.education} />
+
+      <Languages languages={cvData.languages} />
 
       <Contact contactInfo={cvData.contactInfo} />
 

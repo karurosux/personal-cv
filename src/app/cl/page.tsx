@@ -4,9 +4,10 @@ import { useState } from 'react';
 import CoverLetter from '@/components/CoverLetter';
 import TerminalPrompt from '@/components/TerminalPrompt';
 import { buildCoverLetter } from '@/data/cover-letter-data';
-import { cvData } from '@/data/cv-data';
+import { getCVData } from '@/data/cv-data';
 
 export default function CoverLetterPage() {
+  const cvData = getCVData();
   const [companyName, setCompanyName] = useState('[Company Name]');
   const [position, setPosition] = useState('[Position Title]');
   const [whyThisCompany, setWhyThisCompany] = useState(

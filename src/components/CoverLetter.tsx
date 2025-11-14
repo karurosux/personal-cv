@@ -22,7 +22,9 @@ export default function CoverLetter({ data, cvData }: CoverLetterProps) {
             {cvData.contactInfo.phone?.length > 0 && (
               <p>{cvData.contactInfo.phone}</p>
             )}
-            <p>{cvData.contactInfo.location}</p>
+            {cvData.contactInfo.location?.length > 0 && (
+              <p>{cvData.contactInfo.location}</p>
+            )}
           </div>
         </div>
 
