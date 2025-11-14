@@ -18,21 +18,21 @@ const baseData: CVData = {
     "SvelteKit",
     "TypeScript",
     "JavaScript",
-    "NodeJs",
-    "Tailwind",
-    "Golang",
+    "Node.js",
+    "Tailwind CSS",
+    "Go",
     "Redux",
     "NgRx",
-    "Signals",
-    "Npm",
+    "Angular Signals",
+    "NPM",
     "Git",
-    "Scrum",
+    "Agile/Scrum",
   ],
-  allSkills: ["Docker", "PostgreSQL", "ORACLE", "MSSQL"],
+  allSkills: ["Docker", "PostgreSQL", "Oracle Database", "Microsoft SQL Server", "REST API", "Git", "CI/CD", "Microservices", "Responsive Design", "Web Development"],
   programmingLanguages: [
     "JavaScript",
     "TypeScript",
-    "Golang",
+    "Go",
     "C#",
     "Java",
     "SQL",
@@ -40,18 +40,24 @@ const baseData: CVData = {
   frameworks: [
     "Angular",
     "React",
-    "NextJs",
+    "Next.js",
     "SvelteKit",
     "Echo",
-    "LapStack",
+    "LAMP Stack",
     "ExtJS",
-    "ExpressJS",
-    "NestJs",
+    "Express.js",
+    "NestJS",
     "PocketBase",
   ],
   languages: [
     { name: "Spanish", proficiency: "Native" },
     { name: "English", proficiency: "Fluent" },
+  ],
+  certifications: [
+    {
+      name: "Microsoft Certified: HTML5, CSS3 and JavaScript Developer",
+      issuer: "Microsoft",
+    },
   ],
   professionalSummary: {
     intro:
@@ -69,7 +75,7 @@ const baseData: CVData = {
       startDate: "Jan 2019",
       endDate: "May 2025",
       description:
-        "Developed and maintained frontend applications using Angular 2+ and React, delivering modern web interfaces and component-based and plugin-based solutions, developed Java backend features, developed automation scripts, docker containers for development environments and contributed to documenting efforts. Performed as Team Lead of multiple projects, including multiple POCs, war rooms and mentored multiple engineers. Received Employee of the Year award for exceptional contributions.",
+        "Led cross-functional team of 5 engineers (3 frontend, 1 backend, 1 QA) and mentored 3 engineers on modern web development practices, design patterns, and Agile/Scrum methodologies. Architected and developed 3 enterprise-grade plugins using component-based architecture, adopted by 4 internal teams, significantly expanding platform capabilities. Optimized application performance by implementing service worker caching strategies, reducing application reload time from seconds to milliseconds. Spearheaded Stability team for 1 year, resolving 5-10 critical war room incidents annually and maintaining system reliability. Delivered 4 proof-of-concept projects, directly supporting customer retention and new feature validation. Developed enterprise-level frontend applications using Angular 2+ and React with TypeScript, implementing RESTful API integrations, state management with NgRx and Redux, and responsive design using Tailwind CSS and Bootstrap. Built Java Spring backend features and configured Docker containers for development environments. Received Employee of the Year award for exceptional technical contributions and leadership impact.",
       skills: [
         "Angular",
         "React",
@@ -94,11 +100,11 @@ const baseData: CVData = {
       startDate: "Jul 2017",
       endDate: "Jan 2019",
       description:
-        "Developed and maintained clinical trial web applications using Angular 2+ and TypeScript, delivering responsive user interfaces and scalable frontend solutions, including project generators using yeoman to build CLI applications in NodeJs.",
+        "Developed and maintained 3 clinical trial web applications using Angular 2+ framework with TypeScript, implementing responsive user interfaces with Angular Material and delivering scalable frontend solutions following component-based architecture. Collaborated with 3-person team (2 frontend, 1 backend) to deliver high-quality healthcare software for medical research. Engineered custom CLI tool using Yeoman and Node.js to automate project scaffolding, improving development workflow efficiency and ensuring code consistency across teams. Implemented RESTful API integrations for real-time data collection and ensured cross-browser compatibility for clinical trial participants.",
       skills: [
         "Angular",
         "TypeScript",
-        "NodeJs",
+        "Node.js",
         "Yeoman",
         "Angular Material",
         "Git",
@@ -112,17 +118,17 @@ const baseData: CVData = {
       startDate: "Jan 2014",
       endDate: "Jul 2017",
       description:
-        "Led development team delivering web applications with ExtJS frontend, C#/.NET backend, and Oracle/MSSQL databases. Coordinated sprint execution to meet project goals and conducted technical research for proof-of-concepts and architectural solutions.",
+        "Promoted to Team Lead within 6 months of hire, managing cross-functional team of 5 members (3 full-stack developers, 2 QA engineers) delivering enterprise web applications for Mexico's public property registry system. Led full-stack development using ExtJS framework for frontend, C#/.NET for backend services, and Oracle Database/Microsoft SQL Server for data persistence. Successfully delivered 2 major projects including quoter module for property registry system, serving government operations. Architected and implemented Entity Framework ORM for database operations and designed RESTful APIs for client-server communication. Coordinated Agile/Scrum sprint execution, including sprint planning, daily standups, and retrospectives to consistently meet project goals and deadlines. Conducted technical research and developed proof-of-concepts for architectural solutions, evaluating new technologies and frameworks to improve development efficiency. Managed version control with Git using Gitflow branching strategy, ensuring code quality and team collaboration.",
       skills: [
         "ExtJS",
         "C#",
         ".NET",
-        "Oracle",
-        "MSSQL",
+        "Oracle Database",
+        "Microsoft SQL Server",
         "Entity Framework",
         "JavaScript",
-        "NodeJs",
-        "Scrum",
+        "Node.js",
+        "Agile/Scrum",
         "Git",
         "Gitflow",
       ],
@@ -155,9 +161,11 @@ export const getCVData = (): CVData => {
   const params = new URLSearchParams(window.location.search);
   const phoneParam = params.get("cvp");
   const locationParam = params.get("cvl");
+  const jobTitleParam = params.get("cvjt");
 
   return {
     ...baseData,
+    title: jobTitleParam || baseData.title,
     contactInfo: {
       ...baseData.contactInfo,
       phone: phoneParam || baseData.contactInfo.phone,

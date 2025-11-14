@@ -223,43 +223,22 @@ export const CVPDFDocument = ({ data }: PDFDocumentProps) => {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Technical Skills</Text>
-
-          <Text style={styles.subsectionTitle}>Core Competencies</Text>
-          <View style={styles.skillsContainer}>
-            {data.primarySkills.map((skill) => (
-              <Text key={skill} style={styles.skill}>
-                {skill}
-              </Text>
-            ))}
-          </View>
-
-          <Text style={styles.subsectionTitle}>Programming Languages</Text>
-          <View style={styles.skillsContainer}>
-            {data.programmingLanguages.map((lang) => (
-              <Text key={lang} style={styles.skill}>
-                {lang}
-              </Text>
-            ))}
-          </View>
-
-          <Text style={styles.subsectionTitle}>Frameworks & Libraries</Text>
-          <View style={styles.skillsContainer}>
-            {data.frameworks.map((framework) => (
-              <Text key={framework} style={styles.skill}>
-                {framework}
-              </Text>
-            ))}
-          </View>
-
-          <Text style={styles.subsectionTitle}>Additional Technologies</Text>
-          <View style={styles.skillsContainer}>
-            {data.allSkills.map((skill) => (
-              <Text key={skill} style={styles.skill}>
-                {skill}
-              </Text>
-            ))}
-          </View>
+          <Text style={styles.sectionTitle}>Core Technical Competencies</Text>
+          <Text style={styles.text}>
+            Frontend Development: Angular, React, Next.js, Svelte, SvelteKit, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Bootstrap, Responsive Design, Single Page Applications (SPA), Progressive Web Apps (PWA)
+          </Text>
+          <Text style={styles.text}>
+            State Management & Architecture: Redux, NgRx, Angular Signals, Component-Based Architecture, RESTful API Integration, Plugin Architecture
+          </Text>
+          <Text style={styles.text}>
+            Backend & Database: Node.js, Express.js, NestJS, Java Spring, Go, C#/.NET, PostgreSQL, Oracle Database, Microsoft SQL Server, REST API Development
+          </Text>
+          <Text style={styles.text}>
+            DevOps & Tools: Docker, Git, CI/CD, NPM, Agile/Scrum Methodologies, Team Leadership, Technical Documentation
+          </Text>
+          <Text style={styles.text}>
+            Specialized Skills: Geospatial Mapping (OpenLayers, Leaflet), CLI Development, Build Tools, Web Performance Optimization, Cross-Browser Compatibility
+          </Text>
         </View>
 
         <View style={styles.section}>
@@ -322,6 +301,19 @@ export const CVPDFDocument = ({ data }: PDFDocumentProps) => {
               </Text>
             ))}
           </View>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Certifications</Text>
+          {data.certifications.map((cert, index) => (
+            <View key={index} style={{ marginBottom: 8 }}>
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 600 }}>{cert.name}</Text>
+                {cert.issuer && ` - ${cert.issuer}`}
+                {cert.date && ` (${cert.date})`}
+              </Text>
+            </View>
+          ))}
         </View>
       </Page>
     </Document>

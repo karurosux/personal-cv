@@ -8,9 +8,11 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const phoneParam = searchParams.get('cvp');
   const locationParam = searchParams.get('cvl');
+  const jobTitleParam = searchParams.get('cvjt');
 
   const data = {
     ...cvData,
+    ...(jobTitleParam && { title: jobTitleParam }),
     contactInfo: {
       ...cvData.contactInfo,
       ...(phoneParam && { phone: phoneParam }),

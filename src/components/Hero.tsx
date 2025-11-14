@@ -19,19 +19,21 @@ export default function Hero({
   yearsOfExperience,
   contactInfo,
 }: HeroProps) {
-  const getPDFUrl = () => {
-    if (typeof window === "undefined") return "/api/generate-pdf";
+  const getDownloadUrl = (format: "pdf" | "docx") => {
+    if (typeof window === "undefined") return `/api/generate-${format}`;
 
     const params = new URLSearchParams(window.location.search);
     const cvp = params.get("cvp");
     const cvl = params.get("cvl");
+    const cvjt = params.get("cvjt");
 
-    const pdfParams = new URLSearchParams();
-    if (cvp) pdfParams.set("cvp", cvp);
-    if (cvl) pdfParams.set("cvl", cvl);
+    const downloadParams = new URLSearchParams();
+    if (cvp) downloadParams.set("cvp", cvp);
+    if (cvl) downloadParams.set("cvl", cvl);
+    if (cvjt) downloadParams.set("cvjt", cvjt);
 
-    const queryString = pdfParams.toString();
-    return queryString ? `/api/generate-pdf?${queryString}` : "/api/generate-pdf";
+    const queryString = downloadParams.toString();
+    return queryString ? `/api/generate-${format}?${queryString}` : `/api/generate-${format}`;
   };
 
   return (
@@ -150,12 +152,21 @@ export default function Hero({
                   </a>
 
                   <a
-                    href={getPDFUrl()}
+                    href={getDownloadUrl("pdf")}
                     download
                     onClick={() => track("pdf_download")}
                     className="px-4 py-2 terminal-box-cyan text-[#00ffff] hover:bg-[#00ffff]/10 transition-all"
                   >
-                    → download pdf
+                    → download.pdf
+                  </a>
+
+                  <a
+                    href={getDownloadUrl("docx")}
+                    download
+                    onClick={() => track("docx_download")}
+                    className="px-4 py-2 terminal-box-cyan text-[#00ffff] hover:bg-[#00ffff]/10 transition-all"
+                  >
+                    → download.docx
                   </a>
                 </div>
               </div>

@@ -44,6 +44,12 @@ export interface Language {
   proficiency: string;
 }
 
+export interface Certification {
+  name: string;
+  issuer: string;
+  date?: string;
+}
+
 export interface CVData {
   name: string;
   title: string;
@@ -54,6 +60,7 @@ export interface CVData {
   programmingLanguages: string[];
   frameworks: string[];
   languages: Language[];
+  certifications: Certification[];
   professionalSummary: {
     intro: string;
     careerProgression: string;
