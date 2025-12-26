@@ -33,7 +33,9 @@ export default function Hero({
     if (cvjt) downloadParams.set("cvjt", cvjt);
 
     const queryString = downloadParams.toString();
-    return queryString ? `/api/generate-${format}?${queryString}` : `/api/generate-${format}`;
+    return queryString
+      ? `/api/generate-${format}?${queryString}`
+      : `/api/generate-${format}`;
   };
 
   return (
@@ -48,8 +50,8 @@ export default function Hero({
               </div>
               <div className="terminal-box p-3 bg-[#00ff41]/5 relative overflow-hidden w-[220px]">
                 <Image
-                  src="/avatar.jpeg"
-                  alt="Carlos Gonzalez"
+                  src="/avatar.png"
+                  alt="Carlos Javier Gonzalez Vasquez"
                   width={220}
                   height={220}
                   className="w-full h-auto terminal-image"
@@ -58,7 +60,7 @@ export default function Hero({
                 <div className="absolute inset-0 pointer-events-none terminal-image-overlay"></div>
               </div>
               <p className="text-[#8b949e] text-xs">
-                File: avatar.jpeg | 220x220px
+                File: avatar.png | 220x220px
               </p>
             </div>
 
