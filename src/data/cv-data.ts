@@ -1,9 +1,22 @@
 import { CVData } from "@/types/cv";
 
+const calculateYearsOfExperience = (): number => {
+  const startDate = new Date(2014, 0); // January 2014
+  const currentDate = new Date();
+  let years = currentDate.getFullYear() - startDate.getFullYear();
+  if (
+    currentDate.getMonth() < startDate.getMonth() ||
+    (currentDate.getMonth() === startDate.getMonth() && currentDate.getDate() < startDate.getDate())
+  ) {
+    years--;
+  }
+  return years;
+};
+
 const baseData: CVData = {
   name: "Carlos Javier Gonzalez Vasquez",
   title: "Senior Software Engineer",
-  yearsOfExperience: 11,
+  yearsOfExperience: calculateYearsOfExperience(),
   contactInfo: {
     email: "justdevelopitmx@proton.me",
     phone: "",
@@ -12,20 +25,18 @@ const baseData: CVData = {
     linkedin: "https://www.linkedin.com/in/karurosux",
   },
   primarySkills: [
-    "Angular",
-    "React",
-    "Svelte",
-    "SvelteKit",
     "TypeScript",
-    "JavaScript",
     "Node.js",
-    "Tailwind CSS",
     "Go",
-    "Redux",
-    "NgRx",
-    "Angular Signals",
-    "NPM",
-    "Git",
+    "Java",
+    "React",
+    "Angular",
+    "PostgreSQL",
+    "Docker",
+    "REST APIs",
+    "CI/CD",
+    "System Architecture",
+    "JavaScript",
     "Agile/Scrum",
   ],
   allSkills: ["Docker", "PostgreSQL", "Oracle Database", "Microsoft SQL Server", "REST API", "Git", "CI/CD", "Microservices", "Responsive Design", "Web Development"],
@@ -61,11 +72,11 @@ const baseData: CVData = {
   ],
   professionalSummary: {
     intro:
-      "I've built my career by solving complex problems others couldn't tackle and delivering solutions that unlock new capabilities for teams and organizations. My journey began as a Full Stack Developer, where I was promoted to Team Lead after just 6 months—developing end-to-end solutions including a quoter module for Mexico's public property registry system using ExtJS, C#/.NET, and Oracle/MSSQL.",
+      "I am a Senior Software Engineer with over a decade of experience architecting and delivering high-performance, scalable applications. I specialize in designing robust end-to-end solutions that bridge complex backend architectures with seamless user experiences. Throughout my career, I have consistently driven technical innovation, from optimizing database operations and deploying containerized services to leading cross-functional teams in delivering enterprise-grade platforms.",
     careerProgression:
-      "My specialization in frontend development began with mastering AngularJS and early Angular 2, which led to a role with a US clinical trials software company. There, I built sophisticated questionnaire applications that streamlined data collection for medical research. Driven to excel, I immersed myself in advanced technologies, design patterns, and best practices through extensive reading and hands-on experimentation. This dedication to continuous learning caught the attention of Semantic AI, a US data intelligence platform, where I was hired as a Senior Software Engineer.",
+      "My technical foundation was built on engineering comprehensive, data-driven systems, including property registry platforms utilizing C#/.NET and Oracle/MSSQL. I advanced my expertise by architecting clinical trial applications that demanded strict data integrity, real-time RESTful API integrations, and secure data collection workflows. Driven by a passion for scalable architectures, I have continuously expanded my technical repertoire across modern distributed systems, API design, and containerized deployments.",
     currentRole:
-      "At Semantic AI, I've reached my full potential as a senior developer, tackling high-stakes challenges from UI development to leading a plugin framework development team. My contributions have directly saved important customer contracts through rapid problem-solving and proof-of-concept development. While primarily focused on frontend technologies (Angular, React, Vanilla JavaScript), I've expanded my impact across the full stack—developing Java Spring backends, creating CLI tools, managing Docker deployments, and leading documentation efforts. Working alongside exceptionally talented engineers has accelerated my growth, and I've had the privilege of mentoring brilliant developers as well. Recognition of my contributions culminated in receiving the Employee of the Year award, validating my ability to deliver exceptional results and drive meaningful impact on complex software projects.",
+      "At Semantic AI, I lead the technical direction for critical enterprise platforms, architecting modular plugin frameworks and delivering comprehensive features across the entire technology stack. My contributions span engineering robust Java Spring services and optimizing PostgreSQL data flows to developing custom CLI tools and managing Docker-based environments. By prioritizing system reliability and performance—such as reducing application load times by orders of magnitude—I have directly enabled customer retention and the successful delivery of high-stakes contracts. Recognition of my contributions culminated in receiving the Employee of the Year award.",
   },
   workExperience: [
     {
@@ -75,7 +86,7 @@ const baseData: CVData = {
       startDate: "Jan 2019",
       endDate: "May 2025",
       description:
-        "Led cross-functional team of 5 engineers (3 frontend, 1 backend, 1 QA) and mentored 3 engineers on modern web development practices, design patterns, and Agile/Scrum methodologies. Architected and developed 3 enterprise-grade plugins using component-based architecture, adopted by 4 internal teams, significantly expanding platform capabilities. Optimized application performance by implementing service worker caching strategies, reducing application reload time from seconds to milliseconds. Spearheaded Stability team for 1 year, resolving 5-10 critical war room incidents annually and maintaining system reliability. Delivered 4 proof-of-concept projects, directly supporting customer retention and new feature validation. Developed enterprise-level frontend applications using Angular 2+ and React with TypeScript, implementing RESTful API integrations, state management with NgRx and Redux, and responsive design using Tailwind CSS and Bootstrap. Built Java Spring backend features and configured Docker containers for development environments. Received Employee of the Year award for exceptional technical contributions and leadership impact.",
+        "Led cross-functional team of 5 engineers and mentored 3 engineers on modern web development practices, design patterns, and Agile/Scrum methodologies. Architected and developed 3 enterprise-grade plugins utilizing a robust component-based architecture and integrated RESTful APIs, adopted by 4 internal teams, significantly expanding platform capabilities. Optimized application performance by implementing service worker caching strategies, reducing application reload time from seconds to milliseconds. Spearheaded Stability team for 1 year, resolving 5-10 critical war room incidents annually and maintaining system reliability. Delivered 4 proof-of-concept projects, directly supporting customer retention and new feature validation. Developed comprehensive enterprise applications utilizing Java Spring for robust backend services, integrated with PostgreSQL databases, and managed Docker containerization for development and deployment environments. Also developed scalable frontend interfaces using Angular 2+ and React with TypeScript, implementing complex state management with NgRx and Redux. Received Employee of the Year award for exceptional technical contributions and leadership impact.",
       skills: [
         "Angular",
         "React",
