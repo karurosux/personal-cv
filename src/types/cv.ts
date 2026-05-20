@@ -78,7 +78,7 @@ export interface CVData {
   professionalSummary: {
     intro: string;
     careerProgression: string;
-    currentRole: string;
+    currentRole?: string;
   };
   workExperience: WorkExperience[];
   projects?: Project[];

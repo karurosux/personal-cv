@@ -5,7 +5,7 @@ interface ProfessionalSummaryProps {
   summary: {
     intro: string;
     careerProgression: string;
-    currentRole: string;
+    currentRole?: string;
   };
 }
 
@@ -35,12 +35,14 @@ export default function ProfessionalSummary({
             </p>
           </div>
 
-          <div className="space-y-3">
-            <h3 className="text-[#ffff00] text-xl">## The Last Period</h3>
-            <p className="text-[#8b949e] leading-relaxed">
-              {summary.currentRole}
-            </p>
-          </div>
+          {summary.currentRole && (
+            <div className="space-y-3">
+              <h3 className="text-[#ffff00] text-xl">## The Last Period</h3>
+              <p className="text-[#8b949e] leading-relaxed">
+                {summary.currentRole}
+              </p>
+            </div>
+          )}
 
           <div className="pt-6 border-t border-[#00ff41]/20">
             <div className="space-y-2">

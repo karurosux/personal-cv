@@ -19,7 +19,8 @@ export default function TerminalExperience({ cvData }: TerminalExperienceProps) 
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const [currentCommandTyping, setCurrentCommandTyping] = useState("");
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [inputMode, setInputMode] = useState<'command' | 'tailor'>('command');
+  const inputRef = useRef<HTMLTextAreaElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
@@ -162,7 +163,7 @@ export default function TerminalExperience({ cvData }: TerminalExperienceProps) 
     };
   }, [printAbout, printHelp, addHistory]);
 
-  const handleCommand = (cmd: string) => {
+  const handleCommand = async (cmd: string) => {
     const trimmedCmd = cmd.trim().toLowerCase();
     
     // Echo the command
@@ -174,6 +175,17 @@ export default function TerminalExperience({ cvData }: TerminalExperienceProps) 
     );
 
     if (trimmedCmd === '') return;
+
+    if (trimmedCmd === 'tailor') {
+      addHistory(<div className="mb-4 text-[#00ff41]">Entering Tailor Mode. Please paste the job description below. Press <span className="text-white">Shift+Enter</span> for new lines and <span className="text-white">Enter</span> to submit. Type <span className="text-white">cancel</span> to abort.</div>);
+      setInputMode('tailor');
+      return;
+    }
+    
+    if (trimmedCmd.startsWith('tailor ')) {
+      addHistory(<div className="mb-4 text-red-500">Usage: Type exactly &apos;tailor&apos; and press Enter to open the job description prompt.</div>);
+      return;
+    }
 
     switch (trimmedCmd) {
       case 'help':
@@ -313,10 +325,76 @@ export default function TerminalExperience({ cvData }: TerminalExperienceProps) 
     }
   };
 
-  const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+  const handleTailorSubmit = async (jobPosition: string) => {
+    setIsTyping(true);
+    setCurrentCommandTyping("AI Optimization Engine Online...");
+    
+    try {
+      addHistory(<div className="text-[#00ff41]">Analyzing target job description...</div>);
+      addHistory(<div className="text-[#8b949e]">Connecting to LLM cluster...</div>);
+      
+      const response = await fetch('/api/tailor-docx', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ jobPosition }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to tailor CV");
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Carlos_Gonzalez_Tailored.docx`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+
+      addHistory(<div className="mb-4 text-[#00ff41] font-bold">Optimization complete. Download started.</div>);
+    } catch {
+      addHistory(<div className="mb-4 text-red-500">Engine Failure: Could not optimize CV.</div>);
+    } finally {
+      setIsTyping(false);
+      setCurrentCommandTyping("");
+    }
+  };
+
+  const onKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter') {
-      handleCommand(input);
-      setInput("");
+      if (inputMode === 'tailor') {
+        if (!e.shiftKey) {
+          e.preventDefault();
+          const text = input.trim();
+          setInput("");
+          setInputMode('command');
+          
+          addHistory(
+            <div className="flex gap-2 items-start">
+              <TerminalPrompt user="carlos" path="~/tailor" />
+              <span className="text-[#00ffff]">{text.toLowerCase() === 'cancel' ? 'cancel' : '<job description provided>'}</span>
+            </div>
+          );
+
+          if (text.toLowerCase() === 'cancel') {
+            addHistory(<div className="mb-4 text-[#8b949e]">Tailor aborted.</div>);
+            return;
+          }
+          
+          if (!text) {
+             addHistory(<div className="mb-4 text-red-500">Job description cannot be empty. Aborting tailor.</div>);
+             return;
+          }
+
+          handleTailorSubmit(text);
+        }
+      } else {
+        e.preventDefault();
+        handleCommand(input);
+        setInput("");
+      }
     }
   };
 
@@ -338,18 +416,24 @@ export default function TerminalExperience({ cvData }: TerminalExperienceProps) 
         ))}
         
         {/* Active Prompt */}
-        <div className="flex gap-2 items-center">
-          <TerminalPrompt user="carlos" path="~" />
+        <div className="flex gap-2 items-start">
+          <TerminalPrompt user="carlos" path={inputMode === 'tailor' ? "~/tailor" : "~"} />
           {isTyping ? (
             <span className="text-[#00ffff]">{currentCommandTyping}<span className="animate-pulse">_</span></span>
           ) : (
-            <input
+            <textarea
               ref={inputRef}
-              type="text"
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => {
+                setInput(e.target.value);
+                if (inputRef.current) {
+                  inputRef.current.style.height = 'auto';
+                  inputRef.current.style.height = inputRef.current.scrollHeight + 'px';
+                }
+              }}
               onKeyDown={onKeyDown}
-              className="bg-transparent border-none outline-none text-[#00ffff] flex-1 min-w-[50%]"
+              className="bg-transparent border-none outline-none text-[#00ffff] flex-1 min-w-[50%] resize-none overflow-hidden"
+              rows={1}
               autoFocus
               spellCheck={false}
               autoComplete="off"

@@ -133,8 +133,6 @@ const baseData: CVData = {
       `Senior Full Stack Engineer with ${yearsOfExperience}+ years of experience architecting and delivering high-performance, scalable applications across multiple platforms and technologies.`,
     careerProgression:
       "Throughout my career, I've led technical teams, architected enterprise solutions, and built products from the ground up. I've worked extensively with Angular, React, Flutter, Node.js, Go, and Java, deploying containerized solutions using Docker and Dokploy.",
-    currentRole:
-      "Currently leading development of enterprise-grade plugins and platforms, mentoring engineering teams, and architecting scalable solutions using modern technologies like Next.js, Flutter, and Go microservices.",
   },
   workExperience: [
     {

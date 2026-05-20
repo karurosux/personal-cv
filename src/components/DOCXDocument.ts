@@ -89,13 +89,15 @@ export const createCVDocument = (data: CVData): Document => {
     })
   );
 
-  children.push(
-    new Paragraph({
-      text: data.professionalSummary.currentRole,
-      spacing: { after: 300 },
-      alignment: AlignmentType.JUSTIFIED,
-    })
-  );
+  if (data.professionalSummary.currentRole) {
+    children.push(
+      new Paragraph({
+        text: data.professionalSummary.currentRole,
+        spacing: { after: 300 },
+        alignment: AlignmentType.JUSTIFIED,
+      })
+    );
+  }
 
   children.push(
     new Paragraph({
