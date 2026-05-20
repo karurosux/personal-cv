@@ -24,7 +24,7 @@ export default function Contact({ contactInfo }: ContactProps) {
             className="group block p-4 terminal-box hover:bg-[#00ff41]/10 transition-all"
           >
             <div className="space-y-1">
-              <p className="text-[#ffff00] text-sm">// email</p>
+              <p className="text-[#ffff00] text-sm">{"// email"}</p>
               <p className="text-[#00ff41] group-hover:terminal-glow transition-all">
                 {contactInfo.email}
               </p>
@@ -37,7 +37,7 @@ export default function Contact({ contactInfo }: ContactProps) {
               className="group block p-4 terminal-box hover:bg-[#00ff41]/10 transition-all"
             >
               <div className="space-y-1">
-                <p className="text-[#ffff00] text-sm">// phone</p>
+                <p className="text-[#ffff00] text-sm">{"// phone"}</p>
                 <p className="text-[#00ff41] group-hover:terminal-glow transition-all">
                   {contactInfo.phone}
                 </p>
@@ -52,7 +52,7 @@ export default function Contact({ contactInfo }: ContactProps) {
             className="group block p-4 terminal-box-cyan hover:bg-[#00ffff]/10 transition-all"
           >
             <div className="space-y-1">
-              <p className="text-[#ffff00] text-sm">// github</p>
+              <p className="text-[#ffff00] text-sm">{"// github"}</p>
               <p className="text-[#00ffff]">→ github.com/karurosux</p>
             </div>
           </a>
@@ -64,7 +64,7 @@ export default function Contact({ contactInfo }: ContactProps) {
             className="group block p-4 terminal-box-cyan hover:bg-[#00ffff]/10 transition-all"
           >
             <div className="space-y-1">
-              <p className="text-[#ffff00] text-sm">// linkedin</p>
+              <p className="text-[#ffff00] text-sm">{"// linkedin"}</p>
               <p className="text-[#00ffff]">→ linkedin.com/in/karurosux</p>
             </div>
           </a>

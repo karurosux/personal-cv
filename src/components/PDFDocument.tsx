@@ -4,7 +4,6 @@ import {
   Text,
   View,
   StyleSheet,
-  Link,
 } from "@react-pdf/renderer";
 import { CVData } from "@/types/cv";
 
@@ -19,160 +18,106 @@ const styles = StyleSheet.create({
     lineHeight: 1.6,
   },
   header: {
-    marginBottom: 25,
-    borderBottom: "2 solid #2563eb",
-    paddingBottom: 18,
+    marginBottom: 20,
+    borderBottom: "1 solid #e2e8f0",
+    paddingBottom: 15,
   },
   name: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: "bold",
     color: "#0f172a",
-    marginBottom: 18,
-    letterSpacing: -0.5,
+    marginBottom: 8,
   },
   title: {
-    fontSize: 16,
+    fontSize: 14,
     color: "#475569",
-    marginBottom: 16,
-    fontWeight: 600,
+    marginBottom: 8,
+    fontWeight: "bold",
   },
-  contactInfo: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 12,
-    fontSize: 9,
+  contactInfoText: {
+    fontSize: 10,
     color: "#64748b",
-    marginTop: 8,
-  },
-  contactItem: {
-    marginRight: 16,
   },
   contactLink: {
     color: "#2563eb",
     textDecoration: "none",
   },
   section: {
-    marginTop: 18,
-    marginBottom: 18,
+    marginTop: 15,
+    marginBottom: 15,
   },
   sectionTitle: {
-    fontSize: 13,
+    fontSize: 12,
     fontWeight: "bold",
     color: "#0f172a",
-    marginBottom: 10,
+    marginBottom: 8,
     textTransform: "uppercase",
-    letterSpacing: 0.8,
-    borderBottom: "1.5 solid #e2e8f0",
-    paddingBottom: 5,
+    borderBottom: "1 solid #e2e8f0",
+    paddingBottom: 4,
   },
   text: {
     fontSize: 10,
-    lineHeight: 1.6,
+    lineHeight: 1.5,
     color: "#334155",
-    marginBottom: 8,
+    marginBottom: 6,
     textAlign: "justify",
   },
-  skillsContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 6,
-    marginTop: 6,
-  },
-  skill: {
-    backgroundColor: "#f1f5f9",
-    padding: "3 10",
-    borderRadius: 4,
-    fontSize: 9,
-    color: "#334155",
-    border: "1 solid #cbd5e1",
-    marginBottom: 0,
-    lineHeight: 1,
-  },
   experienceItem: {
-    marginBottom: 16,
-    paddingLeft: 12,
-    borderLeft: "3 solid #2563eb",
+    marginBottom: 12,
   },
   experienceHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "flex-start",
+    alignItems: "baseline",
     marginBottom: 4,
   },
   experienceTitle: {
-    fontSize: 12,
+    fontSize: 11,
     fontWeight: "bold",
     color: "#0f172a",
-    marginBottom: 2,
   },
   experienceCompany: {
     fontSize: 11,
+    fontWeight: "bold",
     color: "#2563eb",
-    marginBottom: 2,
-    fontWeight: 600,
   },
   experienceDate: {
     fontSize: 9,
     color: "#64748b",
-    marginBottom: 8,
   },
-  experienceDescription: {
-    fontSize: 10,
-    lineHeight: 1.5,
-    color: "#475569",
-    marginBottom: 8,
-  },
-  subsectionTitle: {
-    fontSize: 10,
-    fontWeight: 600,
-    color: "#475569",
-    marginTop: 10,
-    marginBottom: 6,
-  },
-  techStack: {
+  techStackText: {
     fontSize: 9,
-    color: "#64748b",
-    marginBottom: 6,
-    fontWeight: 600,
+    color: "#475569",
+    marginTop: 2,
   },
   educationItem: {
-    marginBottom: 14,
-    paddingLeft: 12,
-    borderLeft: "3 solid #10b981",
+    marginBottom: 10,
   },
   educationDegree: {
-    fontSize: 12,
+    fontSize: 11,
     fontWeight: "bold",
     color: "#0f172a",
-    marginBottom: 2,
   },
   educationInstitution: {
-    fontSize: 11,
-    color: "#10b981",
-    marginBottom: 2,
-    fontWeight: 600,
-  },
-  educationDate: {
-    fontSize: 9,
-    color: "#64748b",
-    marginBottom: 6,
-  },
-  educationDescription: {
     fontSize: 10,
-    lineHeight: 1.5,
-    color: "#475569",
-    marginBottom: 6,
+    color: "#10b981",
+    fontWeight: "bold",
   },
-  achievementsList: {
-    marginTop: 4,
-    marginBottom: 4,
-  },
-  achievementItem: {
-    fontSize: 9,
-    color: "#475569",
+  bulletPoint: {
+    flexDirection: "row",
+    alignItems: "flex-start",
     marginBottom: 3,
-    paddingLeft: 8,
   },
+  bulletText: {
+    fontSize: 10,
+    color: "#334155",
+    lineHeight: 1.5,
+    flex: 1,
+  },
+  bulletIcon: {
+    width: 10,
+    fontSize: 10,
+  }
 });
 
 interface PDFDocumentProps {
@@ -180,6 +125,14 @@ interface PDFDocumentProps {
 }
 
 export const CVPDFDocument = ({ data }: PDFDocumentProps) => {
+  const contactParts = [
+    data.contactInfo.email,
+    data.contactInfo.phone,
+    data.contactInfo.location,
+    data.contactInfo.github?.replace("https://", ""),
+    data.contactInfo.linkedin?.replace("https://", "")
+  ].filter(Boolean);
+
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -188,27 +141,9 @@ export const CVPDFDocument = ({ data }: PDFDocumentProps) => {
           <Text style={styles.title}>
             {data.title} | {data.yearsOfExperience} Years of Experience
           </Text>
-          <View style={styles.contactInfo}>
-            <Text style={styles.contactItem}>{data.contactInfo.email}</Text>
-            {data.contactInfo.phone?.length > 0 && (
-              <Text style={styles.contactItem}>{data.contactInfo.phone}</Text>
-            )}
-            {data.contactInfo.location?.length > 0 && (
-              <Text style={styles.contactItem}>{data.contactInfo.location}</Text>
-            )}
-          </View>
-          <View style={styles.contactInfo}>
-            <Link src={data.contactInfo.github} style={styles.contactLink}>
-              <Text style={styles.contactItem}>
-                {data.contactInfo.github.replace("https://", "")}
-              </Text>
-            </Link>
-            <Link src={data.contactInfo.linkedin} style={styles.contactLink}>
-              <Text style={styles.contactItem}>
-                {data.contactInfo.linkedin.replace("https://", "")}
-              </Text>
-            </Link>
-          </View>
+          <Text style={styles.contactInfoText}>
+            {contactParts.join(" | ")}
+          </Text>
         </View>
 
         <View style={styles.section}>
@@ -225,19 +160,19 @@ export const CVPDFDocument = ({ data }: PDFDocumentProps) => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Core Technical Competencies</Text>
           <Text style={styles.text}>
-            Frontend Development: Angular, React, Next.js, Svelte, SvelteKit, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Bootstrap, Responsive Design, Single Page Applications (SPA), Progressive Web Apps (PWA)
+            Programming Languages: TypeScript, JavaScript, Go, Java, Dart, C#, Bash
           </Text>
           <Text style={styles.text}>
-            State Management & Architecture: Redux, NgRx, Angular Signals, Component-Based Architecture, RESTful API Integration, Plugin Architecture
+            Frameworks & Tools: Next.js, React, Angular, Node.js, Flutter, Echo, Spring, .NET, ExtJS
           </Text>
           <Text style={styles.text}>
-            Backend & Database: Node.js, Express.js, NestJS, Java Spring, Go, C#/.NET, PostgreSQL, Oracle Database, Microsoft SQL Server, REST API Development
+            Databases & Caching: PostgreSQL, PostGIS, SQLite, Redis, Oracle SQL, MS SQL, MySQL
           </Text>
           <Text style={styles.text}>
-            DevOps & Tools: Docker, Git, CI/CD, NPM, Agile/Scrum Methodologies, Team Leadership, Technical Documentation
+            Infrastructure & Tools: Docker, Dokploy, NGINX, Git, Stripe, RevenueCat, Groq API, Google ML Kit, OpenCV, Sentry, Firebase
           </Text>
           <Text style={styles.text}>
-            Specialized Skills: Geospatial Mapping (OpenLayers, Leaflet), CLI Development, Build Tools, Web Performance Optimization, Cross-Browser Compatibility
+            Concepts: Distributed Systems, Microservices, Domain-Driven Design (DDD), RESTful APIs, CI/CD, Machine Learning
           </Text>
         </View>
 
@@ -245,22 +180,34 @@ export const CVPDFDocument = ({ data }: PDFDocumentProps) => {
           <Text style={styles.sectionTitle}>Professional Experience</Text>
           {data.workExperience.map((exp, index) => (
             <View key={index} style={styles.experienceItem}>
-              <Text style={styles.experienceTitle}>{exp.title}</Text>
-              <Text style={styles.experienceCompany}>{exp.company}</Text>
-              <Text style={styles.experienceDate}>
-                {exp.location} | {exp.startDate} - {exp.endDate}
-              </Text>
-              <Text style={styles.experienceDescription}>
-                {exp.description}
-              </Text>
-              <Text style={styles.techStack}>Technologies Used:</Text>
-              <View style={styles.skillsContainer}>
-                {exp.skills.map((skill) => (
-                  <Text key={skill} style={styles.skill}>
-                    {skill}
-                  </Text>
-                ))}
+              <View style={styles.experienceHeader}>
+                <Text style={styles.experienceCompany}>{exp.company}</Text>
+                <Text style={styles.experienceDate}>{exp.location}</Text>
               </View>
+              
+              {exp.positions.map((pos, posIdx) => (
+                <View key={posIdx} style={{ marginBottom: 8, marginTop: 4 }}>
+                  <View style={styles.experienceHeader}>
+                    <Text style={styles.experienceTitle}>{pos.title}</Text>
+                    <Text style={styles.experienceDate}>{pos.startDate} - {pos.endDate}</Text>
+                  </View>
+                  
+                  {Array.isArray(pos.description) ? (
+                    pos.description.map((bullet, idx) => (
+                      <View key={idx} style={styles.bulletPoint}>
+                        <Text style={styles.bulletIcon}>•</Text>
+                        <Text style={styles.bulletText}>{bullet}</Text>
+                      </View>
+                    ))
+                  ) : (
+                    <Text style={styles.text}>{pos.description}</Text>
+                  )}
+                  
+                  <Text style={styles.techStackText}>
+                    Technologies: {pos.skills.join(", ")}
+                  </Text>
+                </View>
+              ))}
             </View>
           ))}
         </View>
@@ -269,22 +216,22 @@ export const CVPDFDocument = ({ data }: PDFDocumentProps) => {
           <Text style={styles.sectionTitle}>Education</Text>
           {data.education.map((edu, index) => (
             <View key={index} style={styles.educationItem}>
-              <Text style={styles.educationDegree}>{edu.degree}</Text>
-              <Text style={styles.educationInstitution}>{edu.institution}</Text>
-              <Text style={styles.educationDate}>
-                {edu.location} | {edu.startDate} - {edu.endDate}
-              </Text>
+              <View style={styles.experienceHeader}>
+                <Text style={styles.educationDegree}>{edu.degree}</Text>
+                <Text style={styles.experienceDate}>{edu.startDate} - {edu.endDate}</Text>
+              </View>
+              <Text style={styles.educationInstitution}>{edu.institution} | {edu.location}</Text>
+              
               {edu.description && (
-                <Text style={styles.educationDescription}>
-                  {edu.description}
-                </Text>
+                <Text style={[styles.text, { marginTop: 4 }]}>{edu.description}</Text>
               )}
               {edu.achievements && edu.achievements.length > 0 && (
-                <View style={styles.achievementsList}>
+                <View style={{ marginTop: 4 }}>
                   {edu.achievements.map((achievement, idx) => (
-                    <Text key={idx} style={styles.achievementItem}>
-                      • {achievement}
-                    </Text>
+                    <View key={idx} style={styles.bulletPoint}>
+                      <Text style={styles.bulletIcon}>•</Text>
+                      <Text style={styles.bulletText}>{achievement}</Text>
+                    </View>
                   ))}
                 </View>
               )}
@@ -294,27 +241,23 @@ export const CVPDFDocument = ({ data }: PDFDocumentProps) => {
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Languages</Text>
-          <View style={styles.skillsContainer}>
-            {data.languages.map((language, index) => (
-              <Text key={index} style={styles.skill}>
-                {language.name} ({language.proficiency})
-              </Text>
-            ))}
-          </View>
+          <Text style={styles.text}>
+            {data.languages.map((lang) => `${lang.name} (${lang.proficiency})`).join(", ")}
+          </Text>
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Certifications</Text>
-          {data.certifications.map((cert, index) => (
-            <View key={index} style={{ marginBottom: 8 }}>
-              <Text style={styles.text}>
-                <Text style={{ fontWeight: 600 }}>{cert.name}</Text>
+        {data.certifications && data.certifications.length > 0 && (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Certifications</Text>
+            {data.certifications.map((cert, index) => (
+              <Text key={index} style={styles.text}>
+                <Text style={{ fontWeight: "bold" }}>{cert.name}</Text>
                 {cert.issuer && ` - ${cert.issuer}`}
                 {cert.date && ` (${cert.date})`}
               </Text>
-            </View>
-          ))}
-        </View>
+            ))}
+          </View>
+        )}
       </Page>
     </Document>
   );

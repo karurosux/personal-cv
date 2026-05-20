@@ -1,24 +1,15 @@
 import { CVData } from "@/types/cv";
 
-const calculateYearsOfExperience = (): number => {
-  const startDate = new Date(2014, 0); // January 2014
-  const currentDate = new Date();
-  let years = currentDate.getFullYear() - startDate.getFullYear();
-  if (
-    currentDate.getMonth() < startDate.getMonth() ||
-    (currentDate.getMonth() === startDate.getMonth() && currentDate.getDate() < startDate.getDate())
-  ) {
-    years--;
-  }
-  return years;
-};
+const startYear = 2014;
+const currentYear = new Date().getFullYear();
+const yearsOfExperience = currentYear - startYear;
 
 const baseData: CVData = {
   name: "Carlos Javier Gonzalez Vasquez",
   title: "Senior Software Engineer",
-  yearsOfExperience: calculateYearsOfExperience(),
+  yearsOfExperience: yearsOfExperience,
   contactInfo: {
-    email: "justdevelopitmx@proton.me",
+    email: "justdevellopitmx@proton.me",
     phone: "",
     location: "",
     github: "https://github.com/karurosux",
@@ -26,124 +17,321 @@ const baseData: CVData = {
   },
   primarySkills: [
     "TypeScript",
-    "Node.js",
+    "JavaScript",
     "Go",
     "Java",
+    "Dart",
+    "C#",
+    "Next.js",
     "React",
     "Angular",
+    "Node.js",
+    "Flutter",
     "PostgreSQL",
     "Docker",
-    "REST APIs",
-    "CI/CD",
-    "System Architecture",
-    "JavaScript",
-    "Agile/Scrum",
+    "Dokploy",
   ],
-  allSkills: ["Docker", "PostgreSQL", "Oracle Database", "Microsoft SQL Server", "REST API", "Git", "CI/CD", "Microservices", "Responsive Design", "Web Development"],
-  programmingLanguages: [
-    "JavaScript",
+  allSkills: [
     "TypeScript",
+    "JavaScript",
     "Go",
-    "C#",
     "Java",
-    "SQL",
+    "Dart",
+    "C#",
+    "Bash",
+    "Next.js",
+    "React",
+    "Angular",
+    "Node.js",
+    "Flutter",
+    "Echo",
+    "Spring",
+    ".NET",
+    "ExtJS",
+    "PostgreSQL",
+    "PostGIS",
+    "SQLite",
+    "Redis",
+    "Oracle SQL",
+    "MS SQL",
+    "MySQL",
+    "Docker",
+    "Dokploy",
+    "NGINX",
+    "Git",
+    "Stripe",
+    "RevenueCat",
+    "Groq API",
+    "Google ML Kit",
+    "OpenCV",
+    "Sentry",
+    "Firebase",
+    "Distributed Systems",
+    "Microservices",
+    "Domain-Driven Design (DDD)",
+    "RESTful APIs",
+    "CI/CD",
+    "Machine Learning",
+  ],
+  programmingLanguages: [
+    "TypeScript",
+    "JavaScript",
+    "Go",
+    "Java",
+    "Dart",
+    "C#",
+    "Bash",
   ],
   frameworks: [
-    "Angular",
-    "React",
     "Next.js",
-    "SvelteKit",
+    "React",
+    "Angular",
+    "Node.js",
+    "Flutter",
     "Echo",
-    "LAMP Stack",
+    "Spring",
+    ".NET",
     "ExtJS",
-    "Express.js",
-    "NestJS",
-    "PocketBase",
+  ],
+  databases: [
+    "PostgreSQL",
+    "PostGIS",
+    "SQLite",
+    "Redis",
+    "Oracle SQL",
+    "MS SQL",
+    "MySQL",
+  ],
+  infrastructure: [
+    "Docker",
+    "Dokploy",
+    "NGINX",
+    "Git",
+    "Stripe",
+    "RevenueCat",
+    "Groq API",
+    "Google ML Kit",
+    "OpenCV",
+    "Sentry",
+    "Firebase",
+  ],
+  concepts: [
+    "Distributed Systems",
+    "Microservices",
+    "Domain-Driven Design (DDD)",
+    "RESTful APIs",
+    "CI/CD",
+    "Machine Learning",
   ],
   languages: [
     { name: "Spanish", proficiency: "Native" },
     { name: "English", proficiency: "Fluent" },
   ],
-  certifications: [
-    {
-      name: "Microsoft Certified: HTML5, CSS3 and JavaScript Developer",
-      issuer: "Microsoft",
-    },
-  ],
+  certifications: [],
   professionalSummary: {
     intro:
-      "I am a Senior Software Engineer with over a decade of experience architecting and delivering high-performance, scalable applications. I specialize in designing robust end-to-end solutions that bridge complex backend architectures with seamless user experiences. Throughout my career, I have consistently driven technical innovation, from optimizing database operations and deploying containerized services to leading cross-functional teams in delivering enterprise-grade platforms.",
+      `Senior Full Stack Engineer with ${yearsOfExperience}+ years of experience architecting and delivering high-performance, scalable applications across multiple platforms and technologies.`,
     careerProgression:
-      "My technical foundation was built on engineering comprehensive, data-driven systems, including property registry platforms utilizing C#/.NET and Oracle/MSSQL. I advanced my expertise by architecting clinical trial applications that demanded strict data integrity, real-time RESTful API integrations, and secure data collection workflows. Driven by a passion for scalable architectures, I have continuously expanded my technical repertoire across modern distributed systems, API design, and containerized deployments.",
+      "Throughout my career, I've led technical teams, architected enterprise solutions, and built products from the ground up. I've worked extensively with Angular, React, Flutter, Node.js, Go, and Java, deploying containerized solutions using Docker and Dokploy.",
     currentRole:
-      "At Semantic AI, I lead the technical direction for critical enterprise platforms, architecting modular plugin frameworks and delivering comprehensive features across the entire technology stack. My contributions span engineering robust Java Spring services and optimizing PostgreSQL data flows to developing custom CLI tools and managing Docker-based environments. By prioritizing system reliability and performance—such as reducing application load times by orders of magnitude—I have directly enabled customer retention and the successful delivery of high-stakes contracts. Recognition of my contributions culminated in receiving the Employee of the Year award.",
+      "Currently leading development of enterprise-grade plugins and platforms, mentoring engineering teams, and architecting scalable solutions using modern technologies like Next.js, Flutter, and Go microservices.",
   },
   workExperience: [
     {
-      title: "Sr. Software Engineer",
-      company: "Semantic AI",
+      company: "Semantic AI/Research",
       location: "San Diego, CA",
-      startDate: "Jan 2019",
-      endDate: "May 2025",
-      description:
-        "Led cross-functional team of 5 engineers and mentored more than 3 engineers on modern web development practices, design patterns, and Agile/Scrum methodologies. Architected and developed 3 enterprise-grade plugins utilizing a robust component-based architecture and integrated RESTful APIs, adopted by 4 internal teams, significantly expanding platform capabilities. Optimized application performance by implementing service worker caching strategies, reducing application reload time from seconds to milliseconds. Spearheaded Stability team for 1 year, resolving 5-10 critical war room incidents annually and maintaining system reliability. Delivered 4 proof-of-concept projects, directly supporting customer retention and new feature validation. Developed comprehensive enterprise applications utilizing Java Spring for robust backend services, integrated with PostgreSQL databases, and managed Docker containerization for development and deployment environments. Also developed scalable frontend interfaces using Angular 2+ and React with TypeScript, implementing complex state management with NgRx and Redux. Received Employee of the Year award for exceptional technical contributions and leadership impact.",
-      skills: [
-        "Angular",
-        "React",
-        "TypeScript",
-        "Java Spring",
-        "Docker",
-        "NgRx",
-        "PostgreSQL",
-        "OpenLayers",
-        "Leaflet",
-        "Tailwind",
-        "Bootstrap",
-        "Scrum",
-        "Git",
-        "Gitflow",
+      positions: [
+        {
+          title: "Team Lead",
+          startDate: "Jan 2022",
+          endDate: "May 2025",
+          description: [
+            "Architected and led the development of a mission-critical statistics and frequency plugin following product specifications, securing a key enterprise contract through advanced data visualization capabilities.",
+            "Directed the Stability Team as technical lead, achieving a 90% resolution rate for critical full-stack issues across Angular, Java, and PostgreSQL.",
+            "Provided continuous technical mentorship to junior and senior software engineers, fostering professional growth and elevating team performance.",
+            "Acted as a primary advisor for the engineering team, defining robust technical architectures for complex product challenges.",
+            "Architected and spearheaded the development of a cross-organizational plugin framework utilizing Angular, TypeScript, Java, and PostgreSQL.",
+            "Led a Proof of Concept (POC) for the seamless integration of low-code/no-code platforms like AppSmith into the proprietary plugin ecosystem.",
+            "Designed and deployed a Node.js-based CLI tool to automate plugin generation, standardizing development workflows across teams.",
+            "Optimized engineering efficiency by Dockerizing core development dependencies, reducing environment setup friction for the entire team.",
+          ],
+          skills: [
+            "Angular",
+            "React",
+            "TypeScript",
+            "Java Spring",
+            "PostgreSQL",
+            "Docker",
+            "Node.js",
+            "NgRx",
+            "OpenLayers",
+          ],
+        },
+        {
+          title: "Senior Software Engineer",
+          startDate: "Jan 2019",
+          endDate: "Dec 2021",
+          description: [
+            "Engineered a visual Data Import Mapping Manager using TypeScript and Angular, replacing manual JSON configuration and accelerating the import setup process for users.",
+            "Developed and deployed the initial end-to-end (E2E) automated testing suite using Angular's native tooling, significantly enhancing regression coverage.",
+            "Spearheaded code reviews, establishing best practices that consistently elevated code maintainability and quality across the engineering team.",
+            "Optimized technical recruitment by evaluating engineering candidates, directly contributing to high-tier hiring standards and earning 'Employee of the Quarter' honors.",
+          ],
+          skills: [
+            "Angular",
+            "TypeScript",
+            "Node.js",
+            "REST APIs",
+            "E2E Testing",
+          ],
+        },
       ],
     },
     {
-      title: "Software Engineer",
       company: "PRA Health Sciences",
       location: "San Diego, CA",
-      startDate: "Jul 2017",
-      endDate: "Jan 2019",
-      description:
-        "Engineered robust end-to-end clinical trial applications, architecting real-time RESTful APIs for secure, compliant data collection in medical research. Developed custom Node.js CLI tools to automate project scaffolding, significantly improving workflow efficiency and code consistency across engineering teams. Collaborated cross-functionally to integrate scalable backend services with dynamic frontend interfaces built in Angular and TypeScript, ensuring cross-browser compatibility and high-performance user experiences for trial participants.",
-      skills: [
-        "Angular",
-        "TypeScript",
-        "Node.js",
-        "Yeoman",
-        "Angular Material",
-        "Git",
-        "Gitflow",
+      positions: [
+        {
+          title: "Software Engineer",
+          startDate: "Jul 2017",
+          endDate: "Jan 2019",
+          description: [
+            "Developed 4+ clinical trial web applications using Angular and TypeScript, integrating frontend with Web APIs.",
+            "Engineered a custom Node.js CLI tool to scaffold Angular applications, accelerating development speed by 70% and standardizing project structures across teams.",
+          ],
+          skills: [
+            "Angular",
+            "TypeScript",
+            "Node.js",
+            "REST APIs",
+          ],
+        },
       ],
     },
     {
-      title: "Team Lead",
-      company: "Bufete de Tecnologia y Soluciones Avanzadas",
+      company: "BTS (Bufete de Tecnologia y Soluciones Avanzadas)",
       location: "Mexicali, BC, Mexico",
-      startDate: "Jan 2014",
-      endDate: "Jul 2017",
-      description:
-        "Promoted to Team Lead within 6 months, managing a cross-functional team to deliver critical enterprise applications for Mexico's public property registry system. Architected and developed comprehensive full-stack solutions utilizing C#/.NET backend services, Entity Framework ORM, and highly optimized Oracle/MSSQL databases for persistent data storage. Designed scalable RESTful APIs to facilitate seamless client-server communication with complex frontend interfaces. Successfully spearheaded 2 major governmental projects from conception to deployment, including a mission-critical quoter module. Directed Agile/Scrum sprint execution and conducted technical research to implement modern architectural patterns, continually improving team velocity and system reliability.",
-      skills: [
-        "ExtJS",
-        "C#",
-        ".NET",
-        "Oracle Database",
-        "Microsoft SQL Server",
-        "Entity Framework",
-        "JavaScript",
-        "Node.js",
-        "Agile/Scrum",
-        "Git",
-        "Gitflow",
+      positions: [
+        {
+          title: "Team Lead",
+          startDate: "Jan 2015",
+          endDate: "Jul 2017",
+          description: [
+            "Architected and launched a low-code/no-code legal application builder from the ground up.",
+            "Engineered a dynamic form builder module driven by configuration defined by users, utilizing a C# API and ExtJS.",
+            "Built an automated logging system using Oracle and MS SQL stored procedures to dynamically generate record logs.",
+            "Acted as the primary technical escalation point for complex engineering blockers and critical system issues.",
+            "Led comprehensive ExtJS training workshops for cross-functional teams, accelerating framework adoption across the organization.",
+          ],
+          skills: [
+            "ExtJS",
+            "C#",
+            ".NET",
+            "Oracle SQL",
+            "MS SQL",
+          ],
+        },
+        {
+          title: "FullStack Developer",
+          startDate: "Jul 2014",
+          endDate: "Jan 2015",
+          description: [
+            "Resolved 50+ critical application issues across the full stack (C#, ExtJS, Oracle SQL).",
+            "Delivered core application features and developed proof-of-concepts (POCs) for new product initiatives.",
+            "Provided continuous peer mentorship, successfully unblocking teammates on over 30 technical challenges.",
+          ],
+          skills: [
+            "ExtJS",
+            "C#",
+            ".NET",
+            "Oracle SQL",
+          ],
+        },
+        {
+          title: "Jr. FullStack Developer",
+          startDate: "Jan 2014",
+          endDate: "Jul 2014",
+          description: [
+            "Resolved complex, legacy system defects that had previously stalled other engineering teams using C#, ORACLE SQL and ExtJs.",
+            "Developed and integrated custom backend RDLC reports for enterprise clients.",
+            "Authored a reusable RDLC text justification library that achieved widespread adoption across multiple engineering teams.",
+          ],
+          skills: [
+            "ExtJS",
+            "C#",
+            ".NET",
+            "Oracle SQL",
+            "PL/SQL",
+            "Angular",
+          ],
+        },
       ],
     },
+  ],
+  projects: [
+    {
+      name: "TallyDeck – Remote Widgets Platform",
+      url: "tallydeck.com",
+      description: [
+        "Architected and deployed a SaaS-based remote widgets platform, enabling real-time control for dynamic components including timers, prompters, and task lists.",
+        "Integrated Stripe API for seamless subscription lifecycle management and automated billing workflows.",
+        "Optimized deployment infrastructure by Dockerizing application components and orchestrating them via Dokploy on a private VPS.",
+        "Established a robust CI/CD pipeline through Git-provider integration with Dokploy, enabling automated production deployments upon code changes."
+      ],
+      technologies: ["Next.js", "Supabase", "Stripe", "PostgreSQL", "Dokploy", "Docker"]
+    },
+    {
+      name: "Dedishcious – Dish Discovery Application",
+      url: "dedishcious.com/en",
+      description: [
+        "Utilized Next.js to architect the public-facing landing page and administrative staff portal.",
+        "Engineered a robust backend monolith using Go, following Domain-Driven Design (DDD) principles to ensure future scalability into microservices.",
+        "Deployed a Python-based Machine Learning layer to automate image moderation, utilizing Docker networking for secure cross-service communication.",
+        "Optimized system performance by implementing Redis for distributed caching, significantly reducing backend computational load.",
+        "Configured NGINX for advanced request proxying and rate limiting to enhance application security and reliability.",
+        "Managed application state with PostgreSQL, leveraging the PostGIS extension for complex geospatial queries on dish locations.",
+        "Developed a cross-platform mobile application using Flutter and Dart, featuring interactive maps and advanced discovery filters using BLOC pattern.",
+        "Integrated RevenueCat to manage mobile subscription lifecycles and dynamic paywall deployment.",
+        "Containerized the entire architectural stack with Docker to streamline deployment via Dokploy on private infrastructure.",
+        "Established a seamless CI/CD pipeline by integrating Git providers with Dokploy for automated production updates.",
+        "Integrated Sentry to facilitate real-time issue reporting and error tracking across the application stack.",
+        "Leveraged Firebase for the implementation of advanced user analytics and a robust push notification infrastructure."
+      ],
+      technologies: ["Next.js", "Go", "Flutter", "Dart", "RevenueCat", "Redis", "Python", "ML", "NGINX", "Sentry", "Firebase", "PostgreSQL", "PostGIS", "Docker", "Dokploy"]
+    },
+    {
+      name: "Glancy – Membership Management Mobile App",
+      url: "iOS App Store",
+      description: [
+        "Designed and deployed a cross-platform membership management solution utilizing Flutter and Dart, enabling real-time validation via the device camera.",
+        "Integrated RevenueCat to manage mobile subscription lifecycles and dynamic paywall deployment.",
+        "Leveraged Google Face Detection ML Kit to enable real-time membership validation by simply pointing the device camera at members.",
+        "Integrated Sentry to facilitate real-time issue reporting and error tracking across the application stack.",
+        "Leveraged Firebase for the implementation of advanced user analytics."
+      ],
+      technologies: ["Dart", "Flutter", "Revenue Cat", "SQLite", "Google Face Detection ML Kit", "Sentry", "Firebase"],
+    },
+    {
+      name: "ThumbMark – Fingerprint Analysis Application",
+      url: "iOS App Store",
+      description: [
+        "Designed and deployed a cross-platform fingerprint analysis solution utilizing Flutter and Dart, enabling multi-subject capture via the device camera.",
+        "Integrated RevenueCat to manage mobile subscription lifecycles and dynamic paywall deployment.",
+        "Leveraged OpenCV to implement binary and high-contrast image processing filters, optimizing fingerprint data for advanced analytical review.",
+        "Integrated Sentry to facilitate real-time issue reporting and error tracking across the application stack."
+      ],
+      technologies: ["Dart", "Flutter", "Revenue Cat", "SQLite", "OpenCV", "Sentry"],
+    },
+    {
+      name: "Numeri – Numerology Report with AI Integration",
+      url: "Not Published",
+      description: [
+        "Architected and developed an AI-driven numerology platform designed to serve as a universal guide, generating comprehensive, personalized reports based on advanced numeric heuristics.",
+        "Integrated RevenueCat to manage mobile subscription lifecycles and dynamic paywall deployment.",
+        "Integrated Groq API to architect an AI-driven engine for generating personalized reports based on advanced numerology heuristics."
+      ],
+      technologies: ["Dart", "Flutter", "Revenue Cat", "SQLite", "Groq"],
+    }
   ],
   education: [
     {
@@ -153,12 +341,11 @@ const baseData: CVData = {
       startDate: "Sep 2011",
       endDate: "Dec 2014",
       description:
-        "Focused on software engineering, Networks, and Business Intelligence.",
+        "Relevant Coursework: Database Management, Computer Networks, Data Structures and Algorithms (C), Web Development (JavaScript), Object Oriented Programming (C#).",
       achievements: [
-        "3rd Place in 5th Scientific and Technological Creativity Contest",
-        "1st Place in 6th Scientific and Technological Creativity Contest",
-        'Demo Developer(Developed a demo game for the Expo) in UPBC University Expo 2012 "Innovation Meeting with Engineering, Science and Technology"',
-        "Demo Developer(Developed a demo game in Unity Engine with movement sensors as game input for the Expo) in Vocational Guidance UPBC 2013",
+        "Awards: 1st Place in 6th Scientific and Technological Creativity Contest (3rd Semester)",
+        "Awards: 3rd Place in 5th Scientific and Technological Creativity Contest (1st Semester)",
+        "Recognition: Recognized during UPBC University Expo 2012 and Expo 2013 'Innovation Meeting with Engineering, Science and Technology' for collaborating on the Expo Demo Project",
       ],
     },
   ],

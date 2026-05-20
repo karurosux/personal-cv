@@ -5,47 +5,53 @@ import { track } from '@vercel/analytics';
 import TerminalPrompt from './TerminalPrompt';
 
 interface SkillsProps {
-  primarySkills: string[];
-  allSkills: string[];
   programmingLanguages: string[];
   frameworks: string[];
+  databases?: string[];
+  infrastructure?: string[];
+  concepts?: string[];
 }
 
 export default function Skills({
-  primarySkills,
-  allSkills,
   programmingLanguages,
-  frameworks
+  frameworks,
+  databases = [],
+  infrastructure = [],
+  concepts = []
 }: SkillsProps) {
-  const [activeTab, setActiveTab] = useState<'primary' | 'languages' | 'frameworks' | 'all'>('primary');
+  const [activeTab, setActiveTab] = useState<'languages' | 'frameworks' | 'databases' | 'infrastructure' | 'concepts'>('languages');
 
   const getSkillsToDisplay = () => {
     switch (activeTab) {
-      case 'primary':
-        return primarySkills;
       case 'languages':
         return programmingLanguages;
       case 'frameworks':
         return frameworks;
-      case 'all':
-        return allSkills;
+      case 'databases':
+        return databases;
+      case 'infrastructure':
+        return infrastructure;
+      case 'concepts':
+        return concepts;
       default:
-        return primarySkills;
+        return programmingLanguages;
     }
   };
 
   const getCommand = () => {
     switch (activeTab) {
-      case 'primary':
-        return 'cat skills/primary.json';
       case 'languages':
         return 'cat skills/languages.json';
       case 'frameworks':
         return 'cat skills/frameworks.json';
-      case 'all':
-        return 'cat skills/other.json';
+      case 'databases':
+        return 'cat skills/databases.json';
+      case 'infrastructure':
+        return 'cat skills/infrastructure.json';
+      case 'concepts':
+        return 'cat skills/concepts.json';
       default:
-        return 'cat skills/primary.json';
+        return 'cat skills/languages.json';
     }
   };
 
@@ -58,29 +64,17 @@ export default function Skills({
             <span className="text-[#00ffff]">ls -la ./skills</span>
           </div>
           <div className="text-[#8b949e] text-sm pl-0">
-            <p>drwxr-xr-x  4 carlos  staff  128 Oct 23 2024 .</p>
-            <p>drwxr-xr-x  8 carlos  staff  256 Oct 23 2024 ..</p>
-            <p className="text-[#00ff41]">-rw-r--r--  1 carlos  staff  1.2K Oct 23 2024 primary.json</p>
-            <p className="text-[#00ff41]">-rw-r--r--  1 carlos  staff  512B Oct 23 2024 languages.json</p>
-            <p className="text-[#00ff41]">-rw-r--r--  1 carlos  staff  768B Oct 23 2024 frameworks.json</p>
-            <p className="text-[#00ff41]">-rw-r--r--  1 carlos  staff  256B Oct 23 2024 other.json</p>
+            <p>drwxr-xr-x  5 carlos  staff  160 May 19 2026 .</p>
+            <p>drwxr-xr-x  8 carlos  staff  256 May 19 2026 ..</p>
+            <p className="text-[#00ff41]">-rw-r--r--  1 carlos  staff  512B May 19 2026 languages.json</p>
+            <p className="text-[#00ff41]">-rw-r--r--  1 carlos  staff  768B May 19 2026 frameworks.json</p>
+            <p className="text-[#00ff41]">-rw-r--r--  1 carlos  staff  640B May 19 2026 databases.json</p>
+            <p className="text-[#00ff41]">-rw-r--r--  1 carlos  staff  1.1K May 19 2026 infrastructure.json</p>
+            <p className="text-[#00ff41]">-rw-r--r--  1 carlos  staff  450B May 19 2026 concepts.json</p>
           </div>
         </div>
 
         <div className="flex flex-wrap gap-2 mb-8">
-          <button
-            onClick={() => {
-              track('skills_tab_click', { tab: 'primary' });
-              setActiveTab('primary');
-            }}
-            className={`px-4 py-2 terminal-box transition-all ${
-              activeTab === 'primary'
-                ? 'bg-[#00ff41] text-[#0d1117]'
-                : 'text-[#00ff41] hover:bg-[#00ff41]/10'
-            }`}
-          >
-            $ primary.json
-          </button>
           <button
             onClick={() => {
               track('skills_tab_click', { tab: 'languages' });
@@ -109,16 +103,42 @@ export default function Skills({
           </button>
           <button
             onClick={() => {
-              track('skills_tab_click', { tab: 'all' });
-              setActiveTab('all');
+              track('skills_tab_click', { tab: 'databases' });
+              setActiveTab('databases');
             }}
             className={`px-4 py-2 terminal-box transition-all ${
-              activeTab === 'all'
+              activeTab === 'databases'
                 ? 'bg-[#00ff41] text-[#0d1117]'
                 : 'text-[#00ff41] hover:bg-[#00ff41]/10'
             }`}
           >
-            $ other.json
+            $ databases.json
+          </button>
+          <button
+            onClick={() => {
+              track('skills_tab_click', { tab: 'infrastructure' });
+              setActiveTab('infrastructure');
+            }}
+            className={`px-4 py-2 terminal-box transition-all ${
+              activeTab === 'infrastructure'
+                ? 'bg-[#00ff41] text-[#0d1117]'
+                : 'text-[#00ff41] hover:bg-[#00ff41]/10'
+            }`}
+          >
+            $ infrastructure.json
+          </button>
+          <button
+            onClick={() => {
+              track('skills_tab_click', { tab: 'concepts' });
+              setActiveTab('concepts');
+            }}
+            className={`px-4 py-2 terminal-box transition-all ${
+              activeTab === 'concepts'
+                ? 'bg-[#00ff41] text-[#0d1117]'
+                : 'text-[#00ff41] hover:bg-[#00ff41]/10'
+            }`}
+          >
+            $ concepts.json
           </button>
         </div>
 
@@ -131,14 +151,14 @@ export default function Skills({
           <div className="pl-0 space-y-2">
             <p className="text-[#8b949e]">{"{"}</p>
             <div className="pl-4 space-y-1">
-              <p className="text-[#ffff00]">"skills": [</p>
+              <p className="text-[#ffff00]">&quot;skills&quot;: [</p>
               <div className="flex flex-wrap gap-2 pl-4">
                 {getSkillsToDisplay().map((skill, index) => (
                   <span
                     key={skill}
                     className="text-[#00ffff]"
                   >
-                    "{skill}"{index < getSkillsToDisplay().length - 1 ? ',' : ''}
+                    &quot;{skill}&quot;{index < getSkillsToDisplay().length - 1 ? ',' : ''}
                   </span>
                 ))}
               </div>

@@ -19,14 +19,25 @@ export interface Framework {
   name: string;
 }
 
-export interface WorkExperience {
+export interface Position {
   title: string;
-  company: string;
-  location: string;
   startDate: string;
   endDate: string;
-  description: string;
+  description: string | string[];
   skills: string[];
+}
+
+export interface WorkExperience {
+  company: string;
+  location: string;
+  positions: Position[];
+}
+
+export interface Project {
+  name: string;
+  url?: string;
+  description: string | string[];
+  technologies: string[];
 }
 
 export interface Education {
@@ -59,6 +70,9 @@ export interface CVData {
   allSkills: string[];
   programmingLanguages: string[];
   frameworks: string[];
+  databases?: string[];
+  infrastructure?: string[];
+  concepts?: string[];
   languages: Language[];
   certifications: Certification[];
   professionalSummary: {
@@ -67,6 +81,7 @@ export interface CVData {
     currentRole: string;
   };
   workExperience: WorkExperience[];
+  projects?: Project[];
   education: Education[];
 }
 

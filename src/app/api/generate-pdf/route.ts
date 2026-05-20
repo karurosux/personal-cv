@@ -21,6 +21,7 @@ export async function GET(request: NextRequest) {
   };
 
   const pdfDocument = createElement(CVPDFDocument, { data });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const pdfBlob = await pdf(pdfDocument as any).toBlob();
   const pdfBuffer = await pdfBlob.arrayBuffer();
 
