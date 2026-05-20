@@ -2,7 +2,7 @@
 
 import { ContactInfo } from "@/types/cv";
 import TerminalPrompt from "./TerminalPrompt";
-import Image from "next/image";
+import AsciiAvatar from "./AsciiAvatar";
 import { MapPin, Clock, Mail, Phone } from "lucide-react";
 import { track } from "@vercel/analytics";
 
@@ -46,21 +46,13 @@ export default function Hero({
             <div className="space-y-2 flex-shrink-0">
               <div className="flex items-start gap-2">
                 <span className="text-[#8b949e]">$</span>
-                <span className="text-[#00ffff]">display avatar.jpeg</span>
+                <span className="text-[#00ffff]">display avatar.png</span>
               </div>
-              <div className="terminal-box p-3 bg-[#00ff41]/5 relative overflow-hidden w-[220px]">
-                <Image
-                  src="/avatar.png"
-                  alt="Carlos Javier Gonzalez Vasquez"
-                  width={220}
-                  height={220}
-                  className="w-full h-auto terminal-image"
-                  priority
-                />
-                <div className="absolute inset-0 pointer-events-none terminal-image-overlay"></div>
+              <div className="terminal-box p-3 bg-[#00ff41]/5 overflow-hidden">
+                <AsciiAvatar src="/avatar.png" />
               </div>
               <p className="text-[#8b949e] text-xs">
-                File: avatar.png | 220x220px
+                File: avatar.png | 64-color mode
               </p>
             </div>
 
