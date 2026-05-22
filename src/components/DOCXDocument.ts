@@ -57,47 +57,7 @@ export const createCVDocument = (data: CVData): Document => {
     })
   );
 
-  children.push(
-    new Paragraph({
-      text: "PROFESSIONAL SUMMARY",
-      heading: HeadingLevel.HEADING_2,
-      spacing: { before: 200, after: 150 },
-      border: {
-        bottom: {
-          color: "2563eb",
-          space: 1,
-          style: BorderStyle.SINGLE,
-          size: 6,
-        },
-      },
-    })
-  );
 
-  children.push(
-    new Paragraph({
-      text: data.professionalSummary.intro,
-      spacing: { after: 150 },
-      alignment: AlignmentType.JUSTIFIED,
-    })
-  );
-
-  children.push(
-    new Paragraph({
-      text: data.professionalSummary.careerProgression,
-      spacing: { after: 150 },
-      alignment: AlignmentType.JUSTIFIED,
-    })
-  );
-
-  if (data.professionalSummary.currentRole) {
-    children.push(
-      new Paragraph({
-        text: data.professionalSummary.currentRole,
-        spacing: { after: 300 },
-        alignment: AlignmentType.JUSTIFIED,
-      })
-    );
-  }
 
   children.push(
     new Paragraph({

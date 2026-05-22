@@ -146,18 +146,7 @@ export const CVPDFDocument = ({ data }: PDFDocumentProps) => {
           </Text>
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Professional Summary</Text>
-          <Text style={styles.text}>{data.professionalSummary.intro}</Text>
-          <Text style={styles.text}>
-            {data.professionalSummary.careerProgression}
-          </Text>
-          {data.professionalSummary.currentRole && (
-            <Text style={styles.text}>
-              {data.professionalSummary.currentRole}
-            </Text>
-          )}
-        </View>
+
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Core Technical Competencies</Text>
