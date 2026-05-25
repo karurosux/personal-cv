@@ -9,7 +9,7 @@ const baseData: CVData = {
   title: "Senior Software Engineer",
   yearsOfExperience: yearsOfExperience,
   contactInfo: {
-    email: "justdevellopitmx@proton.me",
+    email: "justdevelopitmx@proton.me",
     phone: "",
     location: "",
     github: "https://github.com/karurosux",
@@ -129,8 +129,7 @@ const baseData: CVData = {
   ],
   certifications: [],
   professionalSummary: {
-    intro:
-      `Senior Full Stack Engineer with ${yearsOfExperience}+ years of experience architecting and delivering high-performance, scalable applications across multiple platforms and technologies.`,
+    intro: `Senior Full Stack Engineer with ${yearsOfExperience}+ years of experience architecting and delivering high-performance, scalable applications across multiple platforms and technologies.`,
     careerProgression:
       "Throughout my career, I've led technical teams, architected enterprise solutions, and built products from the ground up. I've worked extensively with Angular, React, Flutter, Node.js, Go, and Java, deploying containerized solutions using Docker and Dokploy.",
   },
@@ -197,12 +196,7 @@ const baseData: CVData = {
             "Developed 4+ clinical trial web applications using Angular and TypeScript, integrating frontend with Web APIs.",
             "Engineered a custom Node.js CLI tool to scaffold Angular applications, accelerating development speed by 70% and standardizing project structures across teams.",
           ],
-          skills: [
-            "Angular",
-            "TypeScript",
-            "Node.js",
-            "REST APIs",
-          ],
+          skills: ["Angular", "TypeScript", "Node.js", "REST APIs"],
         },
       ],
     },
@@ -221,13 +215,7 @@ const baseData: CVData = {
             "Acted as the primary technical escalation point for complex engineering blockers and critical system issues.",
             "Led comprehensive ExtJS training workshops for cross-functional teams, accelerating framework adoption across the organization.",
           ],
-          skills: [
-            "ExtJS",
-            "C#",
-            ".NET",
-            "Oracle SQL",
-            "MS SQL",
-          ],
+          skills: ["ExtJS", "C#", ".NET", "Oracle SQL", "MS SQL"],
         },
         {
           title: "FullStack Developer",
@@ -238,12 +226,7 @@ const baseData: CVData = {
             "Delivered core application features and developed proof-of-concepts (POCs) for new product initiatives.",
             "Provided continuous peer mentorship, successfully unblocking teammates on over 30 technical challenges.",
           ],
-          skills: [
-            "ExtJS",
-            "C#",
-            ".NET",
-            "Oracle SQL",
-          ],
+          skills: ["ExtJS", "C#", ".NET", "Oracle SQL"],
         },
         {
           title: "Jr. FullStack Developer",
@@ -254,14 +237,7 @@ const baseData: CVData = {
             "Developed and integrated custom backend RDLC reports for enterprise clients.",
             "Authored a reusable RDLC text justification library that achieved widespread adoption across multiple engineering teams.",
           ],
-          skills: [
-            "ExtJS",
-            "C#",
-            ".NET",
-            "Oracle SQL",
-            "PL/SQL",
-            "Angular",
-          ],
+          skills: ["ExtJS", "C#", ".NET", "Oracle SQL", "PL/SQL", "Angular"],
         },
       ],
     },
@@ -274,9 +250,16 @@ const baseData: CVData = {
         "Architected and deployed a SaaS-based remote widgets platform, enabling real-time control for dynamic components including timers, prompters, and task lists.",
         "Integrated Stripe API for seamless subscription lifecycle management and automated billing workflows.",
         "Optimized deployment infrastructure by Dockerizing application components and orchestrating them via Dokploy on a private VPS.",
-        "Established a robust CI/CD pipeline through Git-provider integration with Dokploy, enabling automated production deployments upon code changes."
+        "Established a robust CI/CD pipeline through Git-provider integration with Dokploy, enabling automated production deployments upon code changes.",
       ],
-      technologies: ["Next.js", "Supabase", "Stripe", "PostgreSQL", "Dokploy", "Docker"]
+      technologies: [
+        "Next.js",
+        "Supabase",
+        "Stripe",
+        "PostgreSQL",
+        "Dokploy",
+        "Docker",
+      ],
     },
     {
       name: "Dedishcious – Dish Discovery Application",
@@ -293,9 +276,25 @@ const baseData: CVData = {
         "Containerized the entire architectural stack with Docker to streamline deployment via Dokploy on private infrastructure.",
         "Established a seamless CI/CD pipeline by integrating Git providers with Dokploy for automated production updates.",
         "Integrated Sentry to facilitate real-time issue reporting and error tracking across the application stack.",
-        "Leveraged Firebase for the implementation of advanced user analytics and a robust push notification infrastructure."
+        "Leveraged Firebase for the implementation of advanced user analytics and a robust push notification infrastructure.",
       ],
-      technologies: ["Next.js", "Go", "Flutter", "Dart", "RevenueCat", "Redis", "Python", "ML", "NGINX", "Sentry", "Firebase", "PostgreSQL", "PostGIS", "Docker", "Dokploy"]
+      technologies: [
+        "Next.js",
+        "Go",
+        "Flutter",
+        "Dart",
+        "RevenueCat",
+        "Redis",
+        "Python",
+        "ML",
+        "NGINX",
+        "Sentry",
+        "Firebase",
+        "PostgreSQL",
+        "PostGIS",
+        "Docker",
+        "Dokploy",
+      ],
     },
     {
       name: "Glancy – Membership Management Mobile App",
@@ -305,9 +304,17 @@ const baseData: CVData = {
         "Integrated RevenueCat to manage mobile subscription lifecycles and dynamic paywall deployment.",
         "Leveraged Google Face Detection ML Kit to enable real-time membership validation by simply pointing the device camera at members.",
         "Integrated Sentry to facilitate real-time issue reporting and error tracking across the application stack.",
-        "Leveraged Firebase for the implementation of advanced user analytics."
+        "Leveraged Firebase for the implementation of advanced user analytics.",
       ],
-      technologies: ["Dart", "Flutter", "Revenue Cat", "SQLite", "Google Face Detection ML Kit", "Sentry", "Firebase"],
+      technologies: [
+        "Dart",
+        "Flutter",
+        "Revenue Cat",
+        "SQLite",
+        "Google Face Detection ML Kit",
+        "Sentry",
+        "Firebase",
+      ],
     },
     {
       name: "ThumbMark – Fingerprint Analysis Application",
@@ -316,9 +323,16 @@ const baseData: CVData = {
         "Designed and deployed a cross-platform fingerprint analysis solution utilizing Flutter and Dart, enabling multi-subject capture via the device camera.",
         "Integrated RevenueCat to manage mobile subscription lifecycles and dynamic paywall deployment.",
         "Leveraged OpenCV to implement binary and high-contrast image processing filters, optimizing fingerprint data for advanced analytical review.",
-        "Integrated Sentry to facilitate real-time issue reporting and error tracking across the application stack."
+        "Integrated Sentry to facilitate real-time issue reporting and error tracking across the application stack.",
       ],
-      technologies: ["Dart", "Flutter", "Revenue Cat", "SQLite", "OpenCV", "Sentry"],
+      technologies: [
+        "Dart",
+        "Flutter",
+        "Revenue Cat",
+        "SQLite",
+        "OpenCV",
+        "Sentry",
+      ],
     },
     {
       name: "Numeri – Numerology Report with AI Integration",
@@ -326,10 +340,10 @@ const baseData: CVData = {
       description: [
         "Architected and developed an AI-driven numerology platform designed to serve as a universal guide, generating comprehensive, personalized reports based on advanced numeric heuristics.",
         "Integrated RevenueCat to manage mobile subscription lifecycles and dynamic paywall deployment.",
-        "Integrated Groq API to architect an AI-driven engine for generating personalized reports based on advanced numerology heuristics."
+        "Integrated Groq API to architect an AI-driven engine for generating personalized reports based on advanced numerology heuristics.",
       ],
       technologies: ["Dart", "Flutter", "Revenue Cat", "SQLite", "Groq"],
-    }
+    },
   ],
   education: [
     {
@@ -371,3 +385,4 @@ export const getCVData = (): CVData => {
 };
 
 export const cvData = baseData;
+
